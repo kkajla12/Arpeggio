@@ -4,6 +4,8 @@
 
 ## Description
 
+Arpeggio is a peer-to-peer musical instrument and equipment rental marketplace. Users looking to rent out their equipment to other musicians can do so by posting listings on the marketplace. Users looking to rent equipment from others can do so by looking through listings on the marketplace (filtered by location and search history relevance).
+
 ## Team
 
 * Ryan Hansberry:
