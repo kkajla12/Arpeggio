@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 
+  name: MyString
+  description: MyText
+  price: 
+  deposit: 
+  type: 
+  rented: false
+
+two:
+  id: 
+  name: MyString
+  description: MyText
+  price: 
+  deposit: 
+  type: 
+  rented: false
