@@ -5,7 +5,7 @@ class CreateProducts < ActiveRecord::Migration
       t.text :description
       t.decimal :price, precision: 8, scale: 2
       t.decimal :deposit, precision: 8, scale: 2
-      t.string :type
+      t.string :classification, default: false
       t.boolean :rented
 
       t.timestamps null: false

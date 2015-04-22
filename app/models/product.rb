@@ -1,7 +1,6 @@
 class Product < ActiveRecord::Base
-	validates :name, :description, :price, :deposit, :type, :rented, presence: true
+	validates :name, :description, :price, :deposit, :rented, presence: true
 	validates :price, numericality: {greater_than_or_equal_to: 0.01}
-	validates :id, uniqueness: true
 	has_many :images, dependent: :destroy
 	belongs_to :user
 	before_destroy :ensure_not_referenced_by_any_image
