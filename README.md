@@ -23,3 +23,22 @@ Arpeggio is a peer-to-peer musical instrument and equipment rental marketplace. 
 * Janet (Qianwen Zhang):
 
 ![Janet (Qianwen Zhang)](https://avatars3.githubusercontent.com/u/9071142?v=3&amp;s=100 "Janet (Qianwen Zhang)")
+
+## Installation
+
+First, install Ruby on Rails: [https://gorails.com/setup/](https://gorails.com/setup/)
+
+To ensure all necessary dependencies from the Gemfile are available to the application, run:
+
+```
+bundle install
+```
+
+## Usage
+
+To begin the application, run:
+
+```
+rake db:migrate
+rails server
+```
