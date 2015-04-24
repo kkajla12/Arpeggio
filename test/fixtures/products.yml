@@ -6,7 +6,7 @@ one:
   description: MyText
   price: 
   deposit: 
-  type: 
+  classification: 
   rented: false
 
 two:
@@ -15,5 +15,5 @@ two:
   description: MyText
   price: 
   deposit: 
-  type: 
+  classification: 
   rented: false

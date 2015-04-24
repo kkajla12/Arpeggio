@@ -1,43 +1,32 @@
 <p id="notice"><%= notice %></p>
 
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
 <body>
 <%= render 'layouts/header' %>
 
-<h1>Listing Products</h1>
+<h1>Listings</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Deposit</th>
-      <th>Classification</th>
-      <th>Rented</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.id %></td>
-        <td><%= product.name %></td>
-        <td><%= product.description %></td>
-        <td><%= product.price %></td>
-        <td><%= product.deposit %></td>
-        <td><%= product.classification %></td>
-        <td><%= product.rented %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-</body>
+  <% @products.in_groups_of(4, false) do |group| %>
+    <div class="row">
+      <% group.each do |product| %>
+        <div class="col-md-3">
+          <a href="/products/<%= product.id %>">
+            <img src="/image_placeholder.gif" alt="product listing" class="img-responsive img-thumbnail center-block">
+          </a>
+          <h3><strong><a href="/products/<%= product.id %>"><%= product.name %></a></strong></h3>
+          <h3>$<%= "#{'%.02f' % product.price}" %>/day</h3>
+          <h4><em><%= product.classification %></em></h4>
+          <p><%= product.description[0...99] %><a href="/products/<%= product.id %>">...</a></p>
+        </div>
+      <% end %>
+    </div>
+    <br>
+  <% end %>
 
 <br>
+</body>
 
 <%= link_to 'New Product', new_product_path %>
