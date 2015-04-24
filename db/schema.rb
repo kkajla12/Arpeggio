@@ -28,9 +28,9 @@ ActiveRecord::Schema.define(version: 20150417220111) do
     t.decimal  "price",          precision: 8, scale: 2
     t.decimal  "deposit",        precision: 8, scale: 2
     t.string   "classification"
-    t.boolean  "rented",                                 default: false
-    t.datetime "created_at",                                             null: false
-    t.datetime "updated_at",                                             null: false
+    t.boolean  "rented",         default: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "users", force: :cascade do |t|

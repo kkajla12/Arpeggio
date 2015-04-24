@@ -1,9 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  url: MyString
-  product_id: 
-
-two:
-  url: MyString
-  product_id: 
+  url: "http://test.com/test.gif"
+  product_id: 1
