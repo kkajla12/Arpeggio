@@ -1,19 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: 
-  name: MyString
-  description: MyText
-  price: 
-  deposit: 
-  classification: 
+  name: "Fender"
+  description: "Legendary"
+  price: 420
+  deposit: 200
+  classification: "Guitar"
   rented: false
 
 two:
-  id: 
-  name: MyString
-  description: MyText
-  price: 
-  deposit: 
-  classification: 
+  name: "Bass"
+  description: "Luigi"
+  price: 430
+  deposit: 210
+  classification: "Guitar"
   rented: false
