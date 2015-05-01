@@ -14,7 +14,7 @@
       <% group.each do |product| %>
         <div class="col-md-3">
           <a href="/products/<%= product.id %>">
-            <img src="/image_placeholder.gif" alt="product listing" class="img-responsive img-thumbnail center-block">
+            <img src="<%= product.image_url %>" alt="product listing" class="img-responsive img-thumbnail center-block">
           </a>
           <h3><strong><a href="/products/<%= product.id %>"><%= product.name %></a></strong></h3>
           <h3>$<%= "#{'%.02f' % product.price}" %>/day</h3>

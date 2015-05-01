@@ -19,26 +19,26 @@ User.create(email: "user5@arpeggio.com", password: "password")
 			Why are you wasting time reading all of this? Don't you have
 			anything else to do? Go do something else please. Thank you.
 		},
-		price: 30.00, deposit: 150, classification: "speaker", user_id: (i + 1))
+		price: 30.00, deposit: 150, classification: "speaker", user_id: (i + 1), image_url: "/uploads/marshall_cabinet.jpg")
 	Product.create!(name: "Gibson SG Cherry Finish",
 		description: %{
 			This is a sample product listing for this particular product.
 			Why are you wasting time reading all of this? Don't you have
 			anything else to do? Go do something else please. Thank you.
 		},
-		price: 65.00, deposit: 350, classification: "guitar", user_id: (i + 1))
+		price: 65.00, deposit: 350, classification: "guitar", user_id: (i + 1), image_url: "/uploads/gibson_sg.jpg")
 	Product.create!(name: "Sennheiser E835S Performance Vocal Microphone",
 		description: %{
 			This is a sample product listing for this particular product.
 			Why are you wasting time reading all of this? Don't you have
 			anything else to do? Go do something else please. Thank you.
 		},
-		price: 15.00, deposit: 50, classification: "mic", user_id: (i + 1))
+		price: 15.00, deposit: 50, classification: "mic", user_id: (i + 1), image_url: "/uploads/sennheiser_mic.jpg")
 	Product.create!(name: "Yamaha CP-300 88-Key Stage Piano",
 		description: %{
 			This is a sample product listing for this particular product.
 			Why are you wasting time reading all of this? Don't you have
 			anything else to do? Go do something else please. Thank you.
 		},
-		price: 80.00, deposit: 550, classification: "keyboard", user_id: (i + 1))
+		price: 80.00, deposit: 550, classification: "keyboard", user_id: (i + 1), image_url: "/uploads/yamaha_keyboard.jpg")
 end
