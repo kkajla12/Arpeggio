@@ -2,23 +2,11 @@
     arpeggio
 </h1>
 
-<!-- todo: nav bar -->
-<!-- todo: have it persist over all pages -->
-<%= user_signed_in? ? "Signed in!" : "Not signed in!" %>
-<ul>
-<% if user_signed_in? %>
-    <li><%= link_to 'Edit account', edit_user_registration_path %></li>
-    <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
-<% else %>
-  <li><%= link_to "Sign in!", new_user_session_path %></li>
-<% end %>
-</ul>
-
 <p>
     Arpeggio is a peer-to-peer musical instrument and equipment rental marketplace. Users looking to rent out their equipment to other musicians can do so by posting listings on the marketplace. Users looking to rent equipment from others can do so by looking through listings on the marketplace (filtered by location and search history relevance).
 </p>
 
 <ul>
-    <li><%= link_to "Users", users_path %></li>
-    <li><%= link_to "Products", products_path %></li>
+    <li><%= link_to "All Users", users_path %></li>
+    <li><%= link_to "All Products", products_path %></li>
 </ul>
