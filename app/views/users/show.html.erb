@@ -1,6 +1,57 @@
 <p id="notice"><%= notice %></p>
+<%= render 'layouts/header' %>
+<p>
+  <strong>Id:</strong>
+  <%= @user.id %>
+</p>
 
-<%= @user.id %> <%= @user.email %><br>
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<p>
+  <strong>Phone Number:</strong>
+  (310)-399-3062 
+</p>
+
+<p>
+  <strong>Location:</strong>
+  Westwood
+</p>
+
+<p>
+  <strong>Product listing:</strong>
+<table>
+  <thead>
+    <tr>
+      <th>ID &nbsp&nbsp&nbsp</th>
+      <th>Name &nbsp&nbsp&nbsp</th>
+      <th>Price &nbsp&nbsp&nbsp</th>
+      <th>Deposit &nbsp&nbsp&nbsp</th>
+      <th>Classification &nbsp&nbsp&nbsp</th>
+      <th>Rented</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% Product.where(:user_id => @user.id).each do |product| %>
+        <tr>
+          <td><%= product.id %></td>
+          <td><%= product.name %></td>
+          <td><%= product.price %></td>
+          <td><%= product.deposit %></td>
+          <td><%= product.classification %></td>
+          <td><%= product.rented %></td>
+          <td><%= link_to 'Show', product %></td>
+        </tr>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+</p>
+
+
+ <%= link_to 'Edit', edit_user_registration_path(@user) if user_signed_in? && (current_user.id == @user.id) %> 
 <%= link_to 'Back', users_path %>
