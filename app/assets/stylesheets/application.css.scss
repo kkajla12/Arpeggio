@@ -14,13 +14,15 @@
  *= require_self
  */
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
 /* universal */
 
 body {
-	padding-top: 60px;
+/*	padding-top: 60px;*/
+  font-family: 'Lato', Helvetica, sans-serif;
+}
+
+p, ol, ul, td {
+  font-family: 'Roboto', Helvetica, sans-serif;
 }
 
 section {
@@ -43,6 +45,7 @@ textarea {
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
+  font-family: 'Lato', Helvetica, sans-serif;
 }
 
 h1 {
@@ -82,4 +85,95 @@ p {
 #logo:hover {
   color: #fff;
   text-decoration: none;
+}
+
+/* nav bar */
+
+.nav {
+  height: 40px;
+  width: 100%;
+  background-color: red;
+  padding: 0;
+}
+
+.nav div {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav .logo {
+  float: left;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 24px;
+  color: white;
+  margin-left: 20px;
+}
+  .nav .logo a {
+    text-decoration: none;
+  }
+
+.nav div span {
+  padding-left: 10px;
+}
+
+.nav .user-action {
+  float: right;
+  font-weight: 300;
+  font-size: 16px;
+  color: white;
+  margin-right: 20px;
+}
+
+.nav a {
+  color: white;
+}
+  .nav a:hover {
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+/* container */
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+.container .form-wrapper a {
+  text-align: center;
+  display: block;
+}
+  .container .form-wrapper a:hover {
+    background-color: transparent;
+    color: red;
+  }
+
+.container a:hover {
+  background-color: transparent;
+  color: red;
+}
+
+.container .product {
+  display: inline-block;
+  display: inline-block;
+  width: 25%;
+  margin-right: -4px; /* disgusting hack because of inline block issues */
+}
+
+/* forms */
+
+form {
+  width: 152px;
+  margin: auto;
+}
+
+form .field {
+  text-align: center;
+}
+
+form .actions {
+  text-align: center;
 }

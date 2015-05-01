@@ -1,20 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-
-<body>
-<%= render 'layouts/header' %>
-
 <h1>Listings</h1>
 
   <% @products.in_groups_of(4, false) do |group| %>
-    <div class="row">
+    <div>
       <% group.each do |product| %>
-        <div class="col-md-3">
+        <div class="product">
           <a href="/products/<%= product.id %>">
-            <img src="/image_placeholder.gif" alt="product listing" class="img-responsive img-thumbnail center-block">
+            <img src="/image_placeholder.gif">
           </a>
           <h3><strong><a href="/products/<%= product.id %>"><%= product.name %></a></strong></h3>
           <h3>$<%= "#{'%.02f' % product.price}" %>/day</h3>
@@ -23,10 +14,6 @@
         </div>
       <% end %>
     </div>
-    <br>
   <% end %>
-
-<br>
-</body>
 
 <%= link_to 'New Product', new_product_path %>
