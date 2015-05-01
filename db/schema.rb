@@ -28,9 +28,9 @@ ActiveRecord::Schema.define(version: 20150501020306) do
     t.decimal  "price",          precision: 8, scale: 2
     t.decimal  "deposit",        precision: 8, scale: 2
     t.string   "classification"
-    t.boolean  "rented",                                 default: false
-    t.datetime "created_at",                                             null: false
-    t.datetime "updated_at",                                             null: false
+    t.boolean  "rented",         default: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.integer  "user_id"
     t.string   "image_url"
   end
