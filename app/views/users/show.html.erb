@@ -19,6 +19,9 @@
       <th>Deposit &nbsp&nbsp&nbsp</th>
       <th>Classification &nbsp&nbsp&nbsp</th>
       <th>Rented &nbsp&nbsp&nbsp</th>
+      <!-- TODO: close tags -->
+    </tr>
+  </thead>
 
   <tbody>
     <% @products.each do |product| %>
@@ -39,6 +42,6 @@
 
 <br>
 
-<%= link_to 'Edit', edit_user_registration_path(@user)  if user_signed_in? && (current_user.id == @user.id) %> 
+<%= link_to 'Edit', edit_user_registration_path(@user)  if user_signed_in? && (current_user.id == @user.id) %>
 <br>
 <%= link_to 'All Users', users_path %>
