@@ -18,3 +18,5 @@
 
 # ignore README.rdoc
 /README.rdoc
+
+**/*.DS_Store

@@ -1,19 +1,21 @@
+<div>
+  <!-- search, create new products -->
+  <!--<%= link_to 'New Product', new_product_path %>-->
+</div>
 <h1>Listings</h1>
-
-  <% @products.in_groups_of(4, false) do |group| %>
-    <div>
-      <% group.each do |product| %>
-        <div class="product">
-          <a href="/products/<%= product.id %>">
-            <img src="<%= product.image_url %>">
-          </a>
-          <h3><strong><a href="/products/<%= product.id %>"><%= product.name %></a></strong></h3>
-          <h3>$<%= "#{'%.02f' % product.price}" %>/day</h3>
-          <h4><em><%= product.classification %></em></h4>
-          <p><%= product.description[0...99] %><a href="/products/<%= product.id %>">...</a></p>
-        </div>
-      <% end %>
+  <% @products.each do |product| %>
+    <div class="product">
+      <div class="container-img">
+        <a href="/products/<%= product.id %>">
+          <img src="<%= product.image_url %>">
+        </a>
+      </div>
+      <h3><strong><a href="/products/<%= product.id %>"><%= product.name %></a></strong></h3>
+      <h3>$<%= "#{'%.02f' % product.price}" %>/day</h3>
+      <h4><em><%= product.classification %></em></h4>
+      <!--
+      <p><%= product.description[0...99] %><a href="/products/<%= product.id %>">...</a></p>
+      -->
     </div>
   <% end %>
 
-<%= link_to 'New Product', new_product_path %>

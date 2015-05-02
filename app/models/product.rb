@@ -10,7 +10,7 @@ class Product < ActiveRecord::Base
   #has_many :images, dependent: :destroy
   #before_destroy :ensure_not_referenced_by_any_image
 
-  
+
   private
   ##
   #  def ensure_not_referenced_by_any_image

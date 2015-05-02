@@ -1,0 +1,26 @@
+@media (max-width: 1300px) {
+    .container {
+        width: 85%;
+    }
+    .container .product {
+        width: 33%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .container {
+        width: 90%;
+    }
+    .container .product {
+        width: 50%;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+    }
+    .container .product {
+        width: 100%;
+    }
+}

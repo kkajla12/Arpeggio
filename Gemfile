@@ -45,6 +45,3 @@ end
 
 # Use Devise for handling users
 gem 'devise'
-
-# Use bootstrap for styling
-gem 'bootstrap-sass', '~> 3.3.4'

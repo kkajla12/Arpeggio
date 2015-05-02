@@ -28,8 +28,12 @@
     <%= f.text_field :deposit %>
   </div>
   <div class="field">
-    <%= f.label :classification %><br>
-    <%= f.text_field :classification %>
+    <%= f.label "Type" %><br>
+    <%= f.select :classification,
+        options_for_select(["guitar", "bass", "keyboard", "violin",
+                    "accessory", "speaker", "combo amplifier",
+                    "amplifier cabinet", "amplifier head", "cable", "mic"])
+    %>
   </div>
   <div class="field">
     <%= f.label :rented %><br>
