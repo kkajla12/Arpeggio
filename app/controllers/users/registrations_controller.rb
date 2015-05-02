@@ -1,6 +1,12 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
+  before_filter :check_permissions, :only => [ :new, :create, :cancel ]
+  skip_before_filter :require_no_authentication
+
+  def check_permissions
+    authorize! :create, resource
+  end
 
   # GET /resource/sign_up
   # def new

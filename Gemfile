@@ -45,3 +45,6 @@ end
 
 # Use Devise for handling users
 gem 'devise'
+
+# Use Cancan for user authorization
+gem 'cancan'
