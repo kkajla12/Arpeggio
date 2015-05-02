@@ -1,6 +1,6 @@
 <div>
   <!-- search, create new products -->
-  <!--<%= link_to 'New Product', new_product_path %>-->
+  <%= link_to 'New Product', new_product_path %>
 </div>
 <h1>Listings</h1>
   <% @products.each do |product| %>
@@ -12,7 +12,7 @@
       </div>
       <h3><strong><a href="/products/<%= product.id %>"><%= product.name %></a></strong></h3>
       <h3>$<%= "#{'%.02f' % product.price}" %>/day</h3>
-      <h4><em><%= product.classification %></em></h4>
+      <h4><em><%= product.classification.capitalize! %></em></h4>
       <!--
       <p><%= product.description[0...99] %><a href="/products/<%= product.id %>">...</a></p>
       -->

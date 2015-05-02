@@ -21,11 +21,11 @@
     </div>
     <div class="user-action">
         <% if user_signed_in? %>
-            <span><%= link_to 'My account', current_user %></span>
-            <span><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></span>
+          <%= link_to 'My account', current_user %>
+          <%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %>
         <% else %>
-            <span><%= link_to "Sign in", new_user_session_path %></span>
-            <span><%= link_to 'Sign up', new_user_registration_path %></span>
+          <%= link_to "Sign in", new_user_session_path %>
+          <%= link_to 'Sign up', new_user_registration_path %>
         <% end %>
     </div>
 </div>
