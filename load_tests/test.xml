@@ -4,7 +4,7 @@
   </clients>
 
   <servers>
-    <server host="ec2-52-11-38-90.us-west-2.compute.amazonaws.com" port="80" type="tcp"/>
+    <server host="EC2-APP-ADDRESS" port="80" type="tcp"/>
   </servers>
 
   <load>

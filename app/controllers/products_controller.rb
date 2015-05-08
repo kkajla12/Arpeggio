@@ -7,14 +7,15 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    if !params[:keyword].empty? and !params[:classification].empty?
+    if params[:keyword] and !params[:keyword].empty? and
+       params[:classification] and !params[:classification].empty?
       @products = Product.where('name like ? and classification like ?',
                                 "%#{params[:keyword]}%",
                                 "%#{params[:classification]}%").order('created_at DESC')
-    elsif !params[:keyword].empty?
+    elsif params[:keyword] and !params[:keyword].empty?
       @products = Product.where('name like ?',
                                 "%#{params[:keyword]}%").order('created_at DESC')
-    elsif !params[:classification].empty?
+    elsif params[:classification] and !params[:classification].empty?
       @products = Product.where('classification like ?',
                                 "%#{params[:classification]}%").order('created_at DESC')
     else
