@@ -9,7 +9,7 @@ class Product < ActiveRecord::Base
   belongs_to :user
   #has_many :images, dependent: :destroy
   #before_destroy :ensure_not_referenced_by_any_image
-
+  has_attached_file :image
   private
   ##
   #  def ensure_not_referenced_by_any_image
