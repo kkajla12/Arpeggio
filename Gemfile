@@ -48,3 +48,7 @@ gem 'devise'
 
 # Use Cancan for user authorization
 gem 'cancan'
+
+# Use Paperclip for saving files to Amazon S3
+gem 'paperclip'
+gem 'aws-sdk'
