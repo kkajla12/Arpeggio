@@ -48,3 +48,6 @@ gem 'devise'
 
 # Use Cancan for user authorization
 gem 'cancan'
+
+# use will_paginate for product pagination
+gem 'will_paginate', '~> 3.0.6'

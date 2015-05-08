@@ -1,6 +1,16 @@
-<div>
+<div class="product-action">
   <!-- search, create new products -->
   <%= link_to 'New Product', new_product_path %>
+  <%= form_tag(products_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :keyword, params[:keyword], placeholder: "Search Products" %>
+    <%= select_tag :classification,
+        options_for_select(["", "guitar", "bass", "keyboard",
+                            "violin", "accessory", "speaker",
+                            "combo amplifier", "amplifier cabinet",
+                            "amplifier head", "cable", "mic"])
+    %>
+    <%= submit_tag "Search", :name => nil %>
+  <% end %>
 </div>
 <h1>Listings</h1>
   <% @products.each do |product| %>
@@ -19,3 +29,4 @@
     </div>
   <% end %>
 
+<%= will_paginate @products %>

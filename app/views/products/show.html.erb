@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<img src="<%= @product.image_url %>">
+<div class="container-img">
+  <a>
+    <img src="<%= @product.image_url %>">
+  </a>
+</div>
 
 <p>
   <strong>Id:</strong>
@@ -19,12 +23,12 @@
 
 <p>
   <strong>Price:</strong>
-  <%= @product.price %>
+  $<%= "#{'%.02f' % @product.price}" %>/day
 </p>
 
 <p>
   <strong>Deposit:</strong>
-  <%= @product.deposit %>
+  $<%= "#{'%.02f' % @product.deposit}" %>
 </p>
 
 <p>
