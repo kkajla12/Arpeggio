@@ -85,4 +85,12 @@ Rails.application.configure do
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
   }
 }
+
+  Paperclip::Attachment.default_options[:storage] = :s3
+  Paperclip::Attachment.default_options[:s3_credentials] = '#{Rails.root}/config/aws.yml'
+  Paperclip::Attachment.default_options[:url] = ':class/:id/:style.:extension'
+  Paperclip::Attachment.default_options[:path] = '/usr/local/assets/:class/:id_partition/:style.:extension'
+  Paperclip::Attachment.default_options[:bucket]= 'scalableinternetservices/Arpeggio'
+
+
 end
