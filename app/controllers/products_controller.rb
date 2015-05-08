@@ -7,7 +7,22 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    if params[:keyword] and !params[:keyword].empty? and
+       params[:classification] and !params[:classification].empty?
+      @products = Product.where('name like ? and classification like ?',
+                                "%#{params[:keyword]}%",
+                                "%#{params[:classification]}%").order('created_at DESC')
+    elsif params[:keyword] and !params[:keyword].empty?
+      @products = Product.where('name like ?',
+                                "%#{params[:keyword]}%").order('created_at DESC')
+    elsif params[:classification] and !params[:classification].empty?
+      @products = Product.where('classification like ?',
+                                "%#{params[:classification]}%").order('created_at DESC')
+    else
+      @products = Product.all
+    end
+
+    @products = @products.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /products/1

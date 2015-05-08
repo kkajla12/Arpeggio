@@ -9,7 +9,7 @@ class ProductsControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    get :index
+    get :index, :keyword => "", :classification => ""
     assert_response :success
     assert_not_nil assigns(:products)
   end

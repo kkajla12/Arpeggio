@@ -170,6 +170,18 @@ a {
   margin-right: -4px; /* disgusting hack because of inline block issues */
 }
 
+/* temp style - very gross */
+.container .product-action {
+  text-align: center;
+  margin-top: 10px;
+}
+  .container .product-action a {
+    padding-right: 5px;
+  }
+  .container .product-action form {
+    display: inline-block;
+  }
+
 .container-img {
   width: 250px;
   height: 250px;
