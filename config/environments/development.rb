@@ -41,9 +41,23 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 
+  config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+      :bucket => ENV['AWS_BUCKET'],
+      :s3_host_name=>'s3-us-west-2.amazonaws.com',
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+  }
+}
 
-  Paperclip::Attachment.default_options[:url] = '/public/users/uploads/:basename.:extension'
-  Paperclip::Attachment.default_options[:path] = ':rails_root/public/users/uploads/:basename.:extension'
+  Paperclip::Attachment.default_options[:storage] = :s3
+  Paperclip::Attachment.default_options[:s3_credentials] = '/config/aws.yml'
+  Paperclip::Attachment.default_options[:path] = '/usr/local/assets/:class/:id_partition/:style.:extension'
+  Paperclip::Attachment.default_options[:bucket]= 'scalableinternetservices/Arpeggio'
+  # Paperclip::Attachment.default_options[:url] = '/public/users/uploads/:basename.:extension'
+  # Paperclip::Attachment.default_options[:path] = ':rails_root/public/users/uploads/:basename.:extension'
 
 end

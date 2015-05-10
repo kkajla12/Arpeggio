@@ -20,3 +20,6 @@
 /README.rdoc
 
 **/*.DS_Store
+
+# ignore aws.yml
+/config/aws.yml

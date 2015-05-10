@@ -50,7 +50,7 @@ gem 'devise'
 gem 'cancan'
 
 # Use Paperclip for saving files to Amazon S3
-gem 'paperclip'
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'aws-sdk'
 
 # use will_paginate for product pagination

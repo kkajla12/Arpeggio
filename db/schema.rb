@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150502232805) do
+ActiveRecord::Schema.define(version: 20150508225512) do
 
   create_table "images", force: :cascade do |t|
     t.string   "url"
@@ -25,14 +25,18 @@ ActiveRecord::Schema.define(version: 20150502232805) do
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.decimal  "price",          precision: 8, scale: 2
-    t.decimal  "deposit",        precision: 8, scale: 2
+    t.decimal  "price",              precision: 8, scale: 2
+    t.decimal  "deposit",            precision: 8, scale: 2
     t.string   "classification"
-    t.boolean  "rented",                                 default: false
-    t.datetime "created_at",                                             null: false
-    t.datetime "updated_at",                                             null: false
+    t.boolean  "rented",                                     default: false
+    t.datetime "created_at",                                                 null: false
+    t.datetime "updated_at",                                                 null: false
     t.integer  "user_id"
     t.string   "image_url"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "products", ["user_id"], name: "index_products_on_user_id"
