@@ -46,13 +46,6 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.user_id = current_user.id
 
-    #uploaded_io = params[:product][:picture]
-    # File.open(Rails.root.join('public', 'uploads',
-    # uploaded_io.original_filename), 'wb') do |file|
-    #   file.write(uploaded_io.read)
-    # end
-    # @product.image_url = '/uploads/' + uploaded_io.original_filename
-
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
