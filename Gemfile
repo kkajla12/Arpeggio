@@ -53,5 +53,7 @@ gem 'cancan'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'aws-sdk'
 
+gem 'fog'
+
 # use will_paginate for product pagination
 gem 'will_paginate', '~> 3.0.6'
