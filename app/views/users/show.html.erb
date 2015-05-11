@@ -1,4 +1,4 @@
-<h1><%= @user.id %>'s products</h1>
+<h1><%= @user.email.split('@').first %>'s products</h1>
 <table>
   <thead>
     <tr>
@@ -21,7 +21,7 @@
         <td><%= product.classification %></td>
         <td><%= product.rented %></td>
         <td><%= link_to 'Show', product %>&nbsp&nbsp&nbsp</td>
-        <td><%= link_to 'Edit', edit_product_path(product)  if user_signed_in? && (current_user.id == @user.id) %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) if user_signed_in? && (current_user.id == @user.id) %></td>
         <!-- delete -->
       </tr>
     <% end %>
