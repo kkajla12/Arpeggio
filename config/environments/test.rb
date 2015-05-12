@@ -39,4 +39,11 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Braintree sandbox credentials: it is OK to upload these because they are
+  # for the the sandbox environment and are not considered confidential
+  Braintree::Configuration.environment = :sandbox
+  Braintree::Configuration.merchant_id = "fdbd6y9mpyn73qsv"
+  Braintree::Configuration.public_key = "x4hbvd56zt5z88f4"
+  Braintree::Configuration.private_key = "8280dd4ecbd3c2fc92bd611ce92e73b7"
 end

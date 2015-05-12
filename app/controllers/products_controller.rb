@@ -9,17 +9,20 @@ class ProductsController < ApplicationController
   def index
     if params[:keyword] and !params[:keyword].empty? and
        params[:classification] and !params[:classification].empty?
-      @products = Product.where('name like ? and classification like ?',
+      @products = Product.where('name like ? and classification like ? and rented = ?',
                                 "%#{params[:keyword]}%",
-                                "%#{params[:classification]}%").order('created_at DESC')
+                                "%#{params[:classification]}%",
+                                false).order('created_at DESC')
     elsif params[:keyword] and !params[:keyword].empty?
-      @products = Product.where('name like ?',
-                                "%#{params[:keyword]}%").order('created_at DESC')
+      @products = Product.where('name like ? and rented = ?',
+                                "%#{params[:keyword]}%",
+                                false).order('created_at DESC')
     elsif params[:classification] and !params[:classification].empty?
-      @products = Product.where('classification like ?',
-                                "%#{params[:classification]}%").order('created_at DESC')
+      @products = Product.where('classification like ? and rented = ?',
+                                "%#{params[:classification]}%",
+                                false).order('created_at DESC')
     else
-      @products = Product.all
+      @products = Product.where('rented = ?', false)
     end
 
     @products = @products.paginate(:page => params[:page], :per_page => 10)

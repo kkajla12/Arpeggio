@@ -7,19 +7,10 @@ class Product < ActiveRecord::Base
     message: 'must be a URL for GIF, JPG, or PNG image.'
   }
   belongs_to :user
-  #has_many :images, dependent: :destroy
-  #before_destroy :ensure_not_referenced_by_any_image
+  has_one :line_item
+  before_destroy :ensure_not_referenced_by_any_line_item
   has_attached_file :image
   private
-  ##
-  #  def ensure_not_referenced_by_any_image
-  #    if images.empty?
-  #      return true
-  #    else
-  #      errors.add(:base, 'Images present')
-  #      return false
-  #    end
-  #  end
 
     def classification_must_match_one_of_these_values
       accepted_classifications = ["guitar", "bass", "keyboard", "violin",
@@ -27,6 +18,15 @@ class Product < ActiveRecord::Base
                     "amplifier cabinet", "amplifier head", "cable", "mic"]
       if !accepted_classifications.include? classification.downcase
         errors.add(:classification, ":invalid classification")
+      end
+    end
+
+    def ensure_not_referenced_by_any_line_item
+      if line_item.nil?
+        return true
+      else
+        errors.add(:base, 'Line Item present')
+        return false
       end
     end
 end
