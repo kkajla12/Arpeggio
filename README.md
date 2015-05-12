@@ -39,6 +39,6 @@ bundle install
 To begin the application, run:
 
 ```
-rake db:migrate
+rake db:reset
 rails server
 ```

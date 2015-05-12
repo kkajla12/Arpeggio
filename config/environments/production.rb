@@ -77,17 +77,18 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  # Paperclip config
   config.paperclip_defaults = {
     :storage => :s3,
-    :s3_credentials => {
-        :s3_host_name=>'s3-us-west-2.amazonaws.com',
-        :bucket => ENV['AWS_BUCKET'],
-        :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-        :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-    }
+    :s3_host_name => 's3-us-west-2.amazonaws.com',
+    :s3_credentials => "#{Rails.root}/config/aws.yml",
+    :path => "/public/uploads/:basename.:extension",
+    :url => "/uploads/:basename.:extension",
+    :bucket => 'scalableinternetservices/Arpeggio'
   }
 
-  Paperclip::Attachment.default_options[:storage] = :s3
-  Paperclip::Attachment.default_options[:s3_credentials] = '#{Rails.root}/config/aws.yml'
-  Paperclip::Attachment.default_options[:bucket]= 'scalableinternetservices/Arpeggio'
+  #Paperclip::Attachment.default_options[:storage] = :s3
+  #Paperclip::Attachment.default_options[:s3_credentials] = '#{Rails.root}/config/aws.yml'
+  #Paperclip::Attachment.default_options[:bucket] = 'scalableinternetservices/Arpeggio'
+  #Paperclip::Attachment.default_options[:path] = '/public/uploads/:basename.:extension'
 end
