@@ -41,14 +41,11 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  # ImageMagick
-  Paperclip.options[:command_path] = "/usr/local/bin/"
-
-#  Paperclip::Attachment.default_options[:url] = '/public/uploads/:basename.:extension'
-#  Paperclip::Attachment.default_options[:path] = ':rails_root/public/uploads/:basename.:extension'
-  # urls and path are different
-  Paperclip::Attachment.default_options[:url] = '/uploads/:basename.:extension'
-  Paperclip::Attachment.default_options[:path] = ':rails_root/public/users/uploads/:basename.:extension'
+  # Paperclip config
+  config.paperclip_defaults = {
+    :url => '/uploads/:basename.:extension',
+    :path => ':rails_root/public/uploads/:basename.:extension'
+  }
 
   # Braintree sandbox credentials: it is OK to upload these because they are
   # for the the sandbox environment

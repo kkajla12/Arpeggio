@@ -51,7 +51,7 @@ gem 'cancan'
 
 # Use Paperclip for saving files to Amazon S3
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 # use will_paginate for product pagination
 gem 'will_paginate', '~> 3.0.6'
