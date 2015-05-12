@@ -55,3 +55,6 @@ gem 'aws-sdk'
 
 # use will_paginate for product pagination
 gem 'will_paginate', '~> 3.0.6'
+
+# braintree for transactions
+gem 'braintree'

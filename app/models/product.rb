@@ -18,4 +18,13 @@ class Product < ActiveRecord::Base
       errors.add(:classification, ":invalid classification")
     end
   end
+
+  def ensure_not_referenced_by_any_line_item
+    if line_item.nil?
+      return true
+    else
+      errors.add(:base, 'Line Item present')
+      return false
+    end
+  end
 end

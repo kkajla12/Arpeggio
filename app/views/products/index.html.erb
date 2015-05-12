@@ -23,6 +23,7 @@
       <h3><strong><a href="/products/<%= product.id %>"><%= product.name %></a></strong></h3>
       <h3>$<%= "#{'%.02f' % product.price}" %>/day</h3>
       <h4><em><%= product.classification.capitalize! %></em></h4>
+      <%= button_to 'Add to Cart', line_items_path(product_id: product) %>
       <!--
       <p><%= product.description[0...99] %><a href="/products/<%= product.id %>">...</a></p>
       -->

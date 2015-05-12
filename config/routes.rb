@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :orders
+
+  resources :carts
+
+  resources :line_items
+
   resources :products
 
   devise_for :users, :controllers => { :registrations => "users/registrations" }

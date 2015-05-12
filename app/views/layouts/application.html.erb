@@ -11,6 +11,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'responsive', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
 
   <%= csrf_meta_tags %>
 </head>
@@ -22,6 +23,9 @@
     <div class="user-action">
         <% if user_signed_in? %>
           <%= link_to 'My account', current_user %>
+          <% unless current_cart.line_items.empty? %>
+            <%= link_to "My cart (#{current_cart.line_items.count})", current_cart %>
+          <% end %>
           <%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %>
         <% else %>
           <%= link_to "Sign in", new_user_session_path %>
