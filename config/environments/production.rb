@@ -86,9 +86,4 @@ Rails.application.configure do
     :url => "/uploads/:basename.:extension",
     :bucket => 'scalableinternetservices/Arpeggio'
   }
-
-  #Paperclip::Attachment.default_options[:storage] = :s3
-  #Paperclip::Attachment.default_options[:s3_credentials] = '#{Rails.root}/config/aws.yml'
-  #Paperclip::Attachment.default_options[:bucket] = 'scalableinternetservices/Arpeggio'
-  #Paperclip::Attachment.default_options[:path] = '/public/uploads/:basename.:extension'
 end

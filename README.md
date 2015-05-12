@@ -36,9 +36,12 @@ bundle install
 
 ## Usage
 
-To begin the application, run:
+To begin the application locally, run:
 
 ```
 rake db:reset
 rails server
 ```
+
+If deploying on EC2 or other cloud hosting services, be sure to have the
+`aws.yml` credential file present in the `config` directory.

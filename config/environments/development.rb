@@ -42,6 +42,8 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Paperclip config
-  Paperclip::Attachment.default_options[:url] = '/uploads/:basename.:extension'
-  Paperclip::Attachment.default_options[:path] = ':rails_root/public/uploads/:basename.:extension'
+  config.paperclip_defaults = {
+    :url => '/uploads/:basename.:extension',
+    :path => ':rails_root/public/uploads/:basename.:extension'
+  }
 end
