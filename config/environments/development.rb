@@ -47,7 +47,7 @@ Rails.application.configure do
 #  Paperclip::Attachment.default_options[:url] = '/public/uploads/:basename.:extension'
 #  Paperclip::Attachment.default_options[:path] = ':rails_root/public/uploads/:basename.:extension'
   # urls and path are different
-  Paperclip::Attachment.default_options[:url] = '/public/users/uploads/:basename.:extension'
+  Paperclip::Attachment.default_options[:url] = '/uploads/:basename.:extension'
   Paperclip::Attachment.default_options[:path] = ':rails_root/public/users/uploads/:basename.:extension'
 
   # Braintree sandbox credentials: it is OK to upload these because they are
