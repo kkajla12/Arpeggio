@@ -2,6 +2,8 @@ require 'test_helper'
 
 class OrdersControllerTest < ActionController::TestCase
   setup do
+    @user = users(:one)
+    sign_in @user
     @order = orders(:one)
   end
 
