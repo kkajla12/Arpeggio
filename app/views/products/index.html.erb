@@ -12,19 +12,19 @@
     <%= submit_tag "Search", :name => nil %>
   <% end %>
 </div>
-<h1>Listings</h1>
-  <% @products.each do |product| %>
-    <div class="product">
-      <div class="container-img">
-        <a href="/products/<%= product.id %>">
-          <%= image_tag product.image.url %>
-        </a>
-      </div>
-      <h3><strong><a href="/products/<%= product.id %>"><%= product.name %></a></strong></h3>
-      <h3>$<%= "#{'%.02f' % product.price}" %>/day</h3>
-      <h4><em><%= product.classification.capitalize! %></em></h4>
-      <%= button_to 'Add to Cart', line_items_path(product_id: product) %>
+
+<% @products.each do |product| %>
+  <div class="product">
+    <div class="container-img">
+      <a href="/products/<%= product.id %>">
+        <%= image_tag product.image.url %>
+      </a>
     </div>
-  <% end %>
+    <h3><strong><a href="/products/<%= product.id %>"><%= product.name %></a></strong></h3>
+    <h3>$<%= "#{'%.02f' % product.price}" %>/day</h3>
+    <h4><em><%= product.classification.capitalize! %></em></h4>
+    <%= button_to 'Add to Cart', line_items_path(product_id: product), class: "button" %>
+  </div>
+<% end %>
 
 <%= will_paginate @products %>

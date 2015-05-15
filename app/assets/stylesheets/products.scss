@@ -4,54 +4,62 @@
 /* http://mislav.uniqpath.com/will_paginate/ */
 
 .pagination {
-  /* marko - temporary */
+  /* marko - temporary (and very fugly. shame on me.) */
   display: flex;
   justify-content: center;
   margin: 10px 0 10px 0;
-
   background: white;
   cursor: default;
-  /* self-clearing method: */ }
+  /* self-clearing method: */
+}
   .pagination a, .pagination span, .pagination em {
     padding: 0.2em 0.5em;
     display: block;
     float: left;
-    margin-right: 1px; }
+    margin-right: 1px;
+  }
+    .pagination a {
+      text-decoration: none;
+      border: 1px solid rgba(39, 174, 96, 0.5);
+    }
+      .pagination a:hover, .pagination a:focus {
+        border-color: rgba(39, 174, 96, 1);
+      }
   .pagination .disabled {
     color: #999999;
-    border: 1px solid #dddddd; }
+    border: 1px solid #dddddd;
+  }
   .pagination .current {
     font-style: normal;
     font-weight: bold;
-    background: #34495e;/*#2e6ab1;*/
+    background: rgba(39, 174, 96, 0.8);
     color: white;
-    border: 1px solid #34495e;/*#2e6ab1;*/ }
-  .pagination a {
-    text-decoration: none;
-    color: #34495e;/*#105cb6;*/
-    border: 1px solid #34495e;/*#9aafe5;*/ }
-    .pagination a:hover, .pagination a:focus {
-      color: #000033;
-      border-color: #000033; }
+    border: 1px solid rgba(39, 174, 96, 1);
+  }
   .pagination .page_info {
     background: #2e6ab1;
     color: white;
     padding: 0.4em 0.6em;
     width: 22em;
     margin-bottom: 0.3em;
-    text-align: center; }
+    text-align: center;
+  }
     .pagination .page_info b {
       color: #000033;
       background: #6aa6ed;
-      padding: 0.1em 0.25em; }
+      padding: 0.1em 0.25em;
+    }
   .pagination:after {
     content: ".";
     display: block;
     height: 0;
     clear: both;
-    visibility: hidden; }
+    visibility: hidden;
+  }
   * html .pagination {
-    height: 1%; }
+    height: 1%;
+  }
   *:first-child + html .pagination {
-    overflow: hidden; }
+    overflow: hidden;
+  }
 
