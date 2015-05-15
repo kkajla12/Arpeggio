@@ -1,6 +1,9 @@
 <div class="product-action">
   <!-- search, create new products -->
-  <%= link_to 'New Product', new_product_path %>
+  <!-- TODO: fix -->
+  <button class="button">
+    <%= link_to 'New Product', new_product_path %>
+  </button>
   <%= form_tag(products_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :keyword, params[:keyword], placeholder: "Search Products" %>
     <%= select_tag :classification,
