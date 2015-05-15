@@ -14,3 +14,14 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+    $('.search-bar').keydown(function(e) {
+        // If user presses enter:
+        if (e.keyCode === 13) {
+            var query = $(this).val().replace(' ', '+');
+            window.location.assign(
+                '/products?utf8=✓&keyword=' + query + '&classification=');
+        }
+    });
+});
