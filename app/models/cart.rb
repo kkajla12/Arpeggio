@@ -3,7 +3,6 @@ class Cart < ActiveRecord::Base
 
   def add_product(product_id)
     current_item = line_items.build(product_id: product_id)
-    current_item.product.rented = true
     current_item
   end
 
