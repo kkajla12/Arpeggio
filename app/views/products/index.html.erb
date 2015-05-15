@@ -4,10 +4,11 @@
   <%= form_tag(products_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :keyword, params[:keyword], placeholder: "Search Products" %>
     <%= select_tag :classification,
-        options_for_select(["", "guitar", "bass", "keyboard",
+        options_for_select([["Filter by...", ""], "guitar", "bass", "keyboard",
                             "violin", "accessory", "speaker",
                             "combo amplifier", "amplifier cabinet",
-                            "amplifier head", "cable", "mic"])
+                            "amplifier head", "cable", "mic"],
+                            selected: params[:classification] ? params[:classification] : "Filter by...")
     %>
     <%= submit_tag "Search", :name => nil %>
   <% end %>
