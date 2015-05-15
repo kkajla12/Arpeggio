@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
       @products = Product.where('rented = ?', false)
     end
 
-    @products = @products.paginate(:page => params[:page], :per_page => 10)
+    @products = @products.paginate(:page => params[:page], :per_page => 12)
   end
 
   # GET /products/1
