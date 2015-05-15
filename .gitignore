@@ -19,7 +19,7 @@
 # ignore README.rdoc
 /README.rdoc
 
-**/*.DS_Store
+.DS_Store
 
 # ignore aws.yml
 /config/aws.yml
