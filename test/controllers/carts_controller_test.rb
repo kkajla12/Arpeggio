@@ -2,6 +2,8 @@ require 'test_helper'
 
 class CartsControllerTest < ActionController::TestCase
   setup do
+    @user = users(:one)
+    sign_in @user
     @cart = carts(:cart_one)
   end
 
