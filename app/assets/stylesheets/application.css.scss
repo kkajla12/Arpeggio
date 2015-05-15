@@ -29,6 +29,21 @@ textarea {
   resize: vertical;
 }
 
+.alert {
+  color: white;
+  font-family: "Lato";
+  text-align: center;
+  width: 50%;
+  margin: 20px auto;
+  padding: 5px;
+}
+  .alert-success {
+    background-color: rgba(39, 174, 96, 0.8);
+  }
+  .alert-danger {
+    background-color: rgba(231, 76, 60, 0.8);
+  }
+
 .center {
   text-align: center;
 }

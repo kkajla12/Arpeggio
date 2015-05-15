@@ -28,13 +28,24 @@
         width: 100%;
     }
 
-    .nav .logo {
-        font-size: 24px;
+    .nav {
+        height: auto;
+        padding: 12px 0;
     }
-    .nav div:not(.logo) a {
-        font-size: 16px;
-        padding-left: 15px;
-    }
+        .nav .logo, .nav .user-action {
+            float: none;
+            margin: auto;
+        }
+            .nav .logo {
+                font-size: 24px;
+            }
+            .nav .user-action {
+                margin-top: 15px;
+            }
+        .nav div:not(.logo) a {
+            font-size: 16px;
+            padding-left: 15px;
+        }
 
     .search-bar {
         background-size: 40px;
