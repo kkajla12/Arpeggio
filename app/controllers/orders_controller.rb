@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   include CurrentCart
   before_action :set_cart, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
@@ -35,32 +36,59 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
 
-    respond_to do |format|
-      if @order.save
-        nonce = params[:payment_method_nonce]
-        result = Braintree::Transaction.sale(
-          amount: "#{@cart.total_price}",
-          payment_method_nonce: nonce
-        )
+    # check if any products are already rented this could
+    # happen if another user rents the same item before the form
+    # is filled out by the current user
+    all_items_available = true
 
-        Cart.destroy(session[:cart_id])
-        session[:cart_id] = nil
-        if result.success?
-          format.html { redirect_to products_url, notice: 'Payment processed. Thank you for your order.' }
-          format.json { render :show, status: :created, location: @order }
-        else # below: ugly, will clean up later
-          if result.transaction.nil?
-            format.html { render :new,
-              notice: "We were not able to complete your oder at this time. Please try again another time" }
-            format.json { render json: @order.errors, status: :unprocessable_entity }
-          else
-            format.html { render :new, notice: "#{result.transaction.processor_reponse_text}" }
-            format.json { render json: @order.errors, status: :unprocessable_entity }
+    @order.line_items.each do |item|
+      product = Product.find(item.product.id)
+      if product.rented
+        all_items_available = false
+        # remove item from cart if already rented 
+        item.destroy
+      end
+    end
+
+    # set each item in the order to be rented so other users cannot rent it
+    if all_items_available
+      @order.line_items.each do |item|
+        product = Product.find(item.product.id)
+        product.update(rented: true)
+      end
+
+      respond_to do |format|
+        if @order.save
+          nonce = params[:payment_method_nonce]
+          result = Braintree::Transaction.sale(
+            amount: "#{@cart.total_price}",
+            payment_method_nonce: nonce
+          )
+
+          Cart.destroy(session[:cart_id])
+          session[:cart_id] = nil
+          if result.success?
+            format.html { redirect_to products_url, notice: 'Payment processed. Thank you for your order.' }
+            format.json { render :show, status: :created, location: @order }
+          else # below: ugly, will clean up later
+            if result.transaction.nil?
+              format.html { render :new,
+                notice: "We were not able to complete your order at this time. Please try again another time." }
+              format.json { render json: @order.errors, status: :unprocessable_entity }
+            else
+              format.html { render :new, notice: "#{result.transaction.processor_reponse_text}" }
+              format.json { render json: @order.errors, status: :unprocessable_entity }
+            end
           end
+        else
+          format.html { render :new,
+            notice: "We were not able to complete your order at this time. Please try again another time." }
+          format.json { render json: @order.errors, status: :unprocessable_entity }
         end
-      else
-        format.html { render :new,
-          notice: "We were not able to complete your oder at this time. Please try again another time" }
+      end
+    else
+      respond_to do |format|
+        format.html { render :new, notice: 'One or more of the items you requested is no longer available. Please try again.'}
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
