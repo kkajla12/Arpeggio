@@ -18,7 +18,9 @@
               <%= number_to_currency(item.product.price) %>
             </td>
             <td>
-              <input type="number" value="1" min="1" class="rental-days">
+              <%= form_for (item) do |f| %>
+                <%= f.number_field :duration, min: "1", class: "rental-days" %>
+              <% end %>
             </td>
             <td>
               <%= button_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "button button-danger-link" %>

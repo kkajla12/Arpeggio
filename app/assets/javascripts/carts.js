@@ -16,11 +16,12 @@ $(document).on('keyup', '.rental-days', function(e) {
         return;
     }
 
+    var $form = $(this).parent('form');
+    $.post($form.attr('action'), $form.serialize());
+
     var subTotals = $.map($('.line-item'), function(lineItem) {
         var pricePerDay = parseInt($(lineItem).find('.price-per-day').data('price'), 10);
         var numDays = $(lineItem).find('.rental-days').val();
-
-        console.log(':', pricePerDay, numDays)
 
         return pricePerDay * numDays;
     });
