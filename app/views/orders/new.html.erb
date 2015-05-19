@@ -1,18 +1,22 @@
 <div class="depot_form">
   <h2>Your Order</h2>
   <table>
-    <% @cart.line_items.each do |item| %>
-        <tr>
-          <th>Item</th>
-          <th>Price/Day</th>
-          <th>Rental Duration</th>
-        </tr>
-        <tr>
-          <td><%= item.product.name %></td>
-          <td class="item_price"><%= number_to_currency(item.product.price) %></td>
-          <td><%= item.duration %></td>
-        </tr>
-    <% end %>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Price/Day</th>
+        <th>Rental Duration</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cart.line_items.each do |item| %>
+          <tr>
+            <td><%= item.product.name %></td>
+            <td class="item_price"><%= number_to_currency(item.product.price) %></td>
+            <td><%= item.duration %></td>
+          </tr>
+      <% end %>
+    </tbody>
   </table>
 
   <h3 class="total-header">

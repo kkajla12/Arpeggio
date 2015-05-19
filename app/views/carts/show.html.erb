@@ -8,22 +8,24 @@
         <th></th>
       </tr>
     </thead>
-  <% @cart.line_items.each do |item| %>
-      <tr class="line-item">
-        <td>
-          <%= item.product.name %>
-        </td>
-        <td class="price-per-day" data-price="<%= item.product.price %>">
-          <%= number_to_currency(item.product.price) %>
-        </td>
-        <td>
-          <input type="number" value="1" min="1" class="rental-days">
-        </td>
-        <td>
-          <%= button_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "button button-danger-link" %>
-        </td>
-      </tr>
-  <% end %>
+    <tbody>
+      <% @cart.line_items.each do |item| %>
+          <tr class="line-item">
+            <td>
+              <%= item.product.name %>
+            </td>
+            <td class="price-per-day" data-price="<%= item.product.price %>">
+              <%= number_to_currency(item.product.price) %>
+            </td>
+            <td>
+              <input type="number" value="1" min="1" class="rental-days">
+            </td>
+            <td>
+              <%= button_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "button button-danger-link" %>
+            </td>
+          </tr>
+      <% end %>
+    </tbody>
 </table>
 
 <h3 class="total-header">
