@@ -20,55 +20,52 @@
     </div>
 
     <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, required: true %>
     </div>
 
     <div class="field">
       <%= f.label :password %>
-      <% if @validatable %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
+      <%= f.password_field :password, autocomplete: "off", required: true, placeholder: @validatable ? "#{@minimum_password_length} characters minimum" : "" %>
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", required: true %>
     </div>
 
     <div class="field">
-      <%= f.label :street_address %><br />
+      <%= f.label :street_address %>
       <%= f.text_field :street_address, autofocus: true %>
     </div>
 
     <div class="field">
-      <%= f.label :locality %>(City)<br />
+      <%= f.label :locality %>(City)
       <%= f.text_field :locality, autofocus: true %>
     </div>
 
     <div class="field">
-      <%= f.label :postal_code %><br />
+      <%= f.label :postal_code %>
       <%= f.text_field :postal_code, autofocus: true %>
     </div>
 
     <div class="field">
-      <%= f.label :region %>(2-letter State abbreviation)<br />
+      <%= f.label :region %>(2-letter State abbreviation)
       <%= f.text_field :region, autofocus: true %>
     </div>
 
     <div class="field">
-      <%= f.label :account_number %><br />
+      <%= f.label :account_number %>
       <%= f.text_field :account_number, autofocus: true %>
     </div>
 
     <div class="field">
-      <%= f.label :routing_number %><br />
+      <%= f.label :routing_number %>
       <%= f.text_field :routing_number, autofocus: true %>
     </div>
 
     <div class="actions">
-      <%= f.submit "Sign up" %>
+      <%= f.submit "Sign up", class: "button" %>
     </div>
   <% end %>
 
