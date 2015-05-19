@@ -7,8 +7,8 @@ one:
   deposit: 200
   classification: "Guitar"
   rented: false
-  image_url: "http://test.com/images/1.gif"
   user_id: 1
+  lonlat: 'POINT(-118.450777 34.065714)'
 
 two:
   name: "Bass"
@@ -17,5 +17,5 @@ two:
   deposit: 210
   classification: "Guitar"
   rented: false
-  image_url: "http://test.com/images/2.gif"
   user_id: 2
+  lonlat: 'POINT(-118.565050 34.045829)'

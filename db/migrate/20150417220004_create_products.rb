@@ -9,6 +9,11 @@ class CreateProducts < ActiveRecord::Migration
       t.boolean :rented, default: false
 
       t.timestamps null: false
+
+      # geospatial
+      t.st_point :lonlat, geographic: true
     end
+
+    add_index :products, :lonlat, using: :gist
   end
 end

@@ -46,4 +46,34 @@
   <%= @product.rented %>
 </p>
 
-<%= link_to 'Edit', edit_product_path(@product)  if user_signed_in? && (current_user.id == @product.user_id)%>
+<!-- TODO: style properly -->
+<div id="map-canvas" style="width: 500px; height: 500px; margin: auto"></div>
+
+<%= link_to 'Edit', edit_product_path(@product) if user_signed_in? && (current_user.id == @product.user_id)%>
+
+<% content_for :head do %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyC0VbV2Pcv6qPNDZAS5onMDz9qJZtwUJz4" %>
+  <script type="text/javascript">
+    function initialize() {
+      var productLatLng = new google.maps.LatLng(<%= @product.lonlat.y %>, <%= @product.lonlat.x %>);
+
+      var mapOptions = {
+        center: productLatLng,
+        zoom: 14
+      };
+      var map = new google.maps.Map(document.getElementById('map-canvas'),
+          mapOptions);
+
+      var marker = new google.maps.Marker({
+          position: productLatLng,
+          map: map,
+          title: "<%= @product.name %>"
+      });
+    }
+
+    //google.maps.event.addDomListener(window, 'load', initialize);
+    // TODO: BEAUTIFY THIS JANKY CODE
+    $(document).ready(function() { initialize(); });
+    $(document).on('page:load', function() { initialize(); });
+  </script>
+<% end %>
