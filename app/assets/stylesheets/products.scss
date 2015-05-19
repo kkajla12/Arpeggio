@@ -7,9 +7,7 @@
   /* marko - temporary (and very fugly. shame on me.) */
   display: flex;
   justify-content: center;
-  margin: 10px 0 10px 0;
-  background: white;
-  cursor: default;
+  margin: 100px 0;
   /* self-clearing method: */
 }
   .pagination a, .pagination span, .pagination em {
@@ -62,4 +60,3 @@
   *:first-child + html .pagination {
     overflow: hidden;
   }
-
