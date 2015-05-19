@@ -214,6 +214,24 @@ a {
   margin-top: 40px;
 }
 
+.product-price-wrapper, .product-status-wrapper {
+  color: #999;
+}
+.product-price {
+  color: #000;
+}
+.product-status-available {
+  color: rgba(39, 174, 96, 0.8);
+}
+.product-status-rented {
+  color: rgba(231, 76, 60, 0.8);
+}
+
+.product-type {
+  color: #777;
+  font-style: italic;
+}
+
 .container-img {
   width: 250px;
   height: 250px;
