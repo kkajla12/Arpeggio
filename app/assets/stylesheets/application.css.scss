@@ -61,6 +61,14 @@ textarea {
     padding: 20px 40px;
     font-size: 28px;
   }
+  &.button-danger {
+    background-color: rgba(231, 76, 60, 0.8);
+  }
+  &.button-danger-link {
+    background: none;
+    color: rgba(231, 76, 60, 0.8);
+    font-weight: normal;
+  }
 }
   a.button {
     text-decoration: none;
@@ -346,13 +354,41 @@ form {
   }
 }
 
-/* TODO: REMOVE LATER */
 table {
   margin: auto;
+
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  border: 1px solid #cbcbcb;
 }
-td {
-  padding: 2px;
+thead {
+  background: #e0e0e0;
+  text-align: left;
 }
+  th, td {
+    border-left: 1px solid #cbcbcb;
+    border-width: 0 0 0 1px;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible;
+    padding: .5em 1em;
+  }
+    td:first-child, th:first-child {
+      border-left-width: 0;
+    }
+    td input[type="number"] {
+      display: block;
+      width: 50px;
+      font-size: 18px;
+      height: auto;
+      text-indent: 5px;
+      margin: auto;
+    }
+tr:nth-child(2n) {
+  background: #f2f2f2;
+}
+
 
 /* TODO: serve from S3 */
 .cover-image-wrapper {
