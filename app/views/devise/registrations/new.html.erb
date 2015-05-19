@@ -5,6 +5,21 @@
     <%= devise_error_messages! %>
 
     <div class="field">
+      <%= f.label :first_name %><br />
+      <%= f.text_field :first_name, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :date_of_birth %><br />
+      <%= f.date_field :date_of_birth, autofocus: true %>
+    </div>
+
+    <div class="field">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true %>
     </div>
@@ -20,6 +35,36 @@
     <div class="field">
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :street_address %><br />
+      <%= f.text_field :street_address, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :locality %>(City)<br />
+      <%= f.text_field :locality, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :postal_code %><br />
+      <%= f.text_field :postal_code, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :region %>(2-letter State abbreviation)<br />
+      <%= f.text_field :region, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :account_number %><br />
+      <%= f.text_field :account_number, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :routing_number %><br />
+      <%= f.text_field :routing_number, autofocus: true %>
     </div>
 
     <div class="actions">

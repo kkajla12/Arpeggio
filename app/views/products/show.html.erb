@@ -6,44 +6,27 @@
   </a>
 </div>
 
+<h3><strong><%= @product.name %> </strong> </h3>
 <p>
-  <strong>Id:</strong>
-  <%= @product.id %>
+  <%= link_to "#{@product.classification.capitalize}", products_path(classification: @product.classification) %>
+  by <%= link_to "#{@renter_email.split('@').first}", @product.user %>
+  <br>
+  <strong>$<%= "#{'%.02f' % @product.price}" %></strong>/day with <strong>$<%= "#{'%.02f' % @product.deposit}" %></strong> deposit
 </p>
-
+<br>
 <p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
+  <h4>Description</h4>
   <%= @product.description %>
 </p>
 
-<p>
-  <strong>Price:</strong>
-  $<%= "#{'%.02f' % @product.price}" %>/day
-</p>
-
-<p>
-  <strong>Deposit:</strong>
-  $<%= "#{'%.02f' % @product.deposit}" %>
-</p>
-
-<p>
-  <strong>Classification:</strong>
-  <%= @product.classification %>
-</p>
-
-<p>
-  <strong>Renter Email:</strong>
-  <%= @renter_email %>
-</p>
-
-<p>
-  <strong>Rented:</strong>
-  <%= @product.rented %>
-</p>
+<!--<p>
+  <strong>Status:</strong>
+  <% #if @product.rented %>
+    Rented
+  <% #else %>
+    Available
+  <% #end %>
+</p>-->
+<%= button_to 'Add to Cart', line_items_path(product_id: @product), class: "button" %>
 
 <%= link_to 'Edit', edit_product_path(@product)  if user_signed_in? && (current_user.id == @product.user_id)%>

@@ -33,8 +33,7 @@ class OrdersControllerTest < ActionController::TestCase
     assert_difference('Order.count') do
       post :create, order: { address: @order.address, email: @order.email, name: @order.name }
     end
-
-    assert_response :success
+    assert_redirected_to products_url
   end
 
   test "should show order" do
