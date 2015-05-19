@@ -45,7 +45,7 @@ class OrdersController < ApplicationController
       product = Product.find(item.product.id)
       if product.rented
         all_items_available = false
-        # remove item from cart if already rented 
+        # remove item from cart if already rented
         item.destroy
       end
     end
@@ -59,27 +59,22 @@ class OrdersController < ApplicationController
 
       respond_to do |format|
         if @order.save
-          nonce = params[:payment_method_nonce]
-          result = Braintree::Transaction.sale(
-            amount: "#{@cart.total_price}",
-            payment_method_nonce: nonce
-          )
+          @order.line_items.each do |item|
+            amount = '%.2f' % (item.total_price * 0.20)  # we take a 20% cut
+            puts amount
+            nonce = params[:payment_method_nonce]
+            result = Braintree::Transaction.sale(
+              :merchant_account_id => item.product.user.merchant_id,
+              :amount => "#{@cart.total_price}",
+              :payment_method_nonce => nonce,
+              :service_fee_amount => "#{amount}"
+            )
+          end
 
           Cart.destroy(session[:cart_id])
           session[:cart_id] = nil
-          if result.success?
-            format.html { redirect_to products_url, notice: 'Payment processed. Thank you for your order.' }
-            format.json { render :show, status: :created, location: @order }
-          else # below: ugly, will clean up later
-            if result.transaction.nil?
-              format.html { render :new,
-                notice: "We were not able to complete your order at this time. Please try again another time." }
-              format.json { render json: @order.errors, status: :unprocessable_entity }
-            else
-              format.html { render :new, notice: "#{result.transaction.processor_reponse_text}" }
-              format.json { render json: @order.errors, status: :unprocessable_entity }
-            end
-          end
+          format.html { redirect_to products_url, notice: 'Payment processed. Thank you for your order.' }
+          format.json { render :show, status: :created, location: @order }
         else
           format.html { render :new,
             notice: "We were not able to complete your order at this time. Please try again another time." }

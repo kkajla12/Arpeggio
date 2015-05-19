@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+before_filter :update_sanitized_params, if: :devise_controller?
 # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
 
@@ -36,7 +37,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # You can put the params you want to permit in the empty array.
   # def configure_sign_up_params
@@ -57,4 +58,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def update_sanitized_params
+    devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(
+        :email,
+        :password,
+        :password_confirmation,
+        :first_name,
+        :last_name,
+        :date_of_birth,
+        :street_address,
+        :locality,
+        :postal_code,
+        :region,
+        :account_number,
+        :routing_number
+      )}
+  end
 end
