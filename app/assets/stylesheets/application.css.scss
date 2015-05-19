@@ -47,23 +47,31 @@ textarea {
 .button {
   background: rgba(39, 174, 96, 1);
   border: none;
-  padding: 7px 15px;
   color: white;
+  display: block;
   font-family: "Lato";
   font-weight: 100;
   font-size: 15px;
-}
-  #button-index {
-    margin: 20px auto 0 auto;
-    padding: 28px 60px;
-    display: block;
-    font-size: 40px;
+  margin: auto;
+  padding: 7px 15px;
+
+  &.button-big {
+    min-width: 250px;
+    margin: 60px auto;
+    padding: 20px 40px;
+    font-size: 28px;
   }
-    #button-index a {
+}
+  a.button {
+    text-decoration: none;
+    width: 40%;
+    text-align: center;
+    box-sizing: border-box;
+
+    &, &:visited, &:hover {
       color: white;
-      text-decoration: none;
-      font-size: 40px;
     }
+  }
 
 .center {
   text-align: center;
@@ -104,6 +112,9 @@ a {
 }
   a:visited {
     color: rgb(39, 174, 96);
+  }
+  a:hover {
+    color: red;
   }
 
 /* header */
@@ -186,30 +197,12 @@ a {
   margin: auto;
 }
 
-.container a:hover {
-  background-color: transparent;
-  color: red;
-}
-
 .container .product {
   display: inline-block;
   width: 25%;
   margin-right: -4px; /* disgusting hack because of inline block issues */
   margin-top: 40px;
 }
-
-/* temp style - very gross */
-.container .product-action {
-  text-align: center;
-  margin-top: 10px;
-}
-  .container .product-action a {
-    color: #fff;
-    text-decoration: none;
-  }
-  .container .product-action form {
-    display: inline-block;
-  }
 
 .container-img {
   width: 250px;
@@ -239,37 +232,78 @@ form {
   form .field {
     margin: 15px 0;
   }
-    form .field label, form .field input {
+    form label, form input {
       display: inline-block;
       height: 36px;
     }
-      form .field label {
-        width: 11em;
-        margin-right: 10px;
-        text-align: right;
+      form label {
         color: #aaa;
       }
-      form .field input {
+        form .field label {
+          width: 11em;
+          margin-right: 10px;
+          text-align: right;
+        }
+      form input {
         width: 160px;
-        text-indent: 10px;
       }
-    form .field.field-checkbox {
-
+        form input[type="text"], form input[type="email"], form input[type="password"] {
+          text-indent: 10px;
+        }
+    form .field.field-checkbox label {
+      width: auto;
+      margin-left: -7em;
     }
-      form .field.field-checkbox label {
-        width: auto;
-        margin-left: -7em;
-      }
-      form .field.field-checkbox input[type="checkbox"] {
-        height: 14px;
-        width: 14px;
-      }
+    form .field.field-checkbox input[type="checkbox"] {
+      height: 14px;
+      width: 14px;
+    }
   form .field_with_errors {
     display: inline;
   }
     form .field_with_errors input {
       outline: 1px solid rgba(255, 0, 0, 0.7);
     }
+
+.product-action .button {
+    width: 140px;
+}
+
+.product-search-form {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+
+  input {
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  input[type="text"] {
+    width: 300px;
+  }
+  .button {
+    display: inline-block;
+    width: 120px;
+  }
+
+  select {
+      -webkit-appearance: none;
+         -moz-appearance: none;
+              appearance: none;
+      background: url(filter.png);
+      background-repeat: no-repeat;
+      background-size: 24px;
+      background-position-y: 6px;
+      color: transparent;
+      cursor: pointer;
+      outline: none;
+      border: none;
+      width: 28px;
+      margin-left: -28px;
+  }
+}
 
 #error_explanation {
   max-width: 400px;
@@ -295,13 +329,10 @@ form {
   }
 }
 
-
-
 /* TODO: REMOVE LATER */
 table {
   margin: auto;
 }
-
 td {
   padding: 2px;
 }
@@ -339,5 +370,10 @@ td {
   background-size: 48px;
   background-position-y: 17px;
   background-position-x: 23px;
-}
 
+  // These *cannot* be placed in a list together. The browser will not recognize one selector and thus reject the rule.
+  &::-webkit-input-placeholder  { color: #eee; }
+  &:-moz-placeholder { color: #eee; }
+  &::-moz-placeholder { color: #eee; }
+  &:-ms-input-placeholder { color: #eee; }
+}
