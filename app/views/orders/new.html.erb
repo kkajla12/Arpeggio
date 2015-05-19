@@ -13,15 +13,14 @@
           <td><%= item.duration %></td>
         </tr>
     <% end %>
-
-    <tr class="total_line">
-      <td colspan="2">Total</td>
-      <td class="total_cell"><%= number_to_currency(@cart.total_price) %></td>
-    </tr>
   </table>
-  <br>
+
+  <h3 class="total-header">
+    Total: <span class="total"><%= number_to_currency(@cart.total_price) %></span>
+  </h3>
+
   <fieldset>
-    <legend>Please Enter Your Details</legend>
+    <legend>Please Enter Your Billing Details</legend>
     <%= render 'form' %>
   </fieldset>
 </div>

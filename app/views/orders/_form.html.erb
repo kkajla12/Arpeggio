@@ -12,20 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, size: 40 %>
+    <%= f.label :name %>
+    <%= f.text_field :name%>
   </div>
   <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_area :address, rows: 3, cols: 40 %>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email, size: 40 %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
   </div>
   <div id="dropin"></div>
   <div class="actions">
-    <%= f.submit 'Place Order' %>
+    <%= f.submit 'Place Order', class: "button button-big" %>
   </div>
 <% end %>
 

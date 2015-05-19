@@ -28,7 +28,7 @@
 
 <h3 class="total-header">
   Total: <span class="total"><%= number_to_currency(@cart.total_price) %></span>
-</h2>
+</h3>
 
 <div class="form-wrapper">
   <%= button_to 'Checkout', new_order_path, method: :get, class: "button" %>
