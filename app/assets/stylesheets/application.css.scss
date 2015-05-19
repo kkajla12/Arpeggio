@@ -195,6 +195,7 @@ a {
 .container {
   width: 80%;
   margin: auto;
+  margin-bottom: 50px;
 }
 
 .container .product {
@@ -232,7 +233,7 @@ form {
   form .field {
     margin: 15px 0;
   }
-    form label, form input {
+    form label, form input, form textarea {
       display: inline-block;
       height: 36px;
     }
@@ -244,20 +245,36 @@ form {
           margin-right: 10px;
           text-align: right;
         }
-      form input {
+      form input, form select, form textarea {
         width: 160px;
       }
         form input[type="text"], form input[type="email"], form input[type="password"] {
           text-indent: 10px;
         }
-    form .field.field-checkbox label {
-      width: auto;
-      margin-left: -7em;
+        form textarea {
+          padding: 10px;
+          box-sizing: border-box;
+          height: 100px;
+        }
+    form .field.field-checkbox {
+      label {
+        width: auto;
+        margin-left: -7em;
+      }
+      input[type="checkbox"] {
+        height: 14px;
+        width: 14px;
+      }
     }
-    form .field.field-checkbox input[type="checkbox"] {
-      height: 14px;
-      width: 14px;
+    form .field.field-file {
+      label {
+        width: 18em;
+      }
+      input {
+        width: 250px;
+      }
     }
+
   form .field_with_errors {
     display: inline;
   }
