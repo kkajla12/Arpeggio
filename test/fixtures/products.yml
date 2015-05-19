@@ -6,7 +6,6 @@ one:
   price: 420
   deposit: 200
   classification: "Guitar"
-  rented: false
   user_id: 1
   lonlat: 'POINT(-118.450777 34.065714)'
 
@@ -16,6 +15,5 @@ two:
   price: 430
   deposit: 210
   classification: "Guitar"
-  rented: false
   user_id: 2
   lonlat: 'POINT(-118.565050 34.045829)'
