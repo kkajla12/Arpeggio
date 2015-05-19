@@ -1,34 +1,41 @@
 <h2>Your Cart</h2>
 <table>
-  <% @cart.line_items.each do |item| %>
+    <thead>
       <tr>
         <th>Item</th>
-        <th>Price/Day</th>
-        <th>Rental Duration</th>
+        <th>Price per Day</th>
+        <th>Rental Duration (Days)</th>
+        <th></th>
       </tr>
-      <tr>
-        <td><%= item.product.name %></td>
-        <td class="item_price"><%= number_to_currency(item.product.price) %></td>
-        <%= form_for (item) do |f| %>
-          <td>
-            <%= f.text_field :duration, :size => 1 %>
-            <%= f.submit :value => "Update Duration" %>
-          </td>
-        <% end %>
-        <td><%= button_to 'Remove from cart', item, method: :delete,
-                data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-  <% end %>
-
-  <tr class="total_line">
-    <td colspan="2">Total</td>
-    <td class="total_cell"><%= number_to_currency(@cart.total_price) %></td>
-  </tr>
+    </thead>
+    <tbody>
+      <% @cart.line_items.each do |item| %>
+          <tr class="line-item">
+            <td>
+              <%= item.product.name %>
+            </td>
+            <td class="price-per-day" data-price="<%= item.product.price %>">
+              <%= number_to_currency(item.product.price) %>
+            </td>
+            <td>
+              <%= form_for (item) do |f| %>
+                <%= f.number_field :duration, min: "1", class: "rental-days" %>
+              <% end %>
+            </td>
+            <td>
+              <%= button_to 'Remove', item, method: :delete, class: "button button-danger-link" %>
+            </td>
+          </tr>
+      <% end %>
+    </tbody>
 </table>
 
+<h3 class="total-header">
+  Total: <span class="total"><%= number_to_currency(@cart.total_price) %></span>
+</h3>
+
 <div class="form-wrapper">
-  <%= button_to 'Checkout', new_order_path, method: :get %>
-  <%= button_to 'Empty cart', @cart, method: :delete,
-      data: { confirm: 'Are you sure?'} %>
+  <%= button_to 'Checkout', new_order_path, method: :get, class: "button" %>
+  <%= button_to 'Empty cart', @cart, method: :delete, class: "button button-danger" %>
   <%= link_to "Continue shopping", products_url %>
 </div>

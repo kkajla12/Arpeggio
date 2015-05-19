@@ -5,70 +5,67 @@
     <%= devise_error_messages! %>
 
     <div class="field">
-      <%= f.label :first_name %><br />
-      <%= f.text_field :first_name, autofocus: true %>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, autofocus: true, required: true %>
     </div>
 
     <div class="field">
-      <%= f.label :last_name %><br />
-      <%= f.text_field :last_name, autofocus: true %>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, required: true %>
     </div>
 
     <div class="field">
-      <%= f.label :date_of_birth %><br />
-      <%= f.date_field :date_of_birth, autofocus: true %>
+      <%= f.label :date_of_birth %>
+      <%= f.date_field :date_of_birth, required: true %>
     </div>
 
     <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
+      <%= f.label :email %>
+      <%= f.email_field :email, required: true %>
     </div>
 
     <div class="field">
       <%= f.label :password %>
-      <% if @validatable %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
+      <%= f.password_field :password, autocomplete: "off", required: true, placeholder: @validatable ? "#{@minimum_password_length} characters minimum" : "" %>
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", required: true %>
     </div>
 
     <div class="field">
-      <%= f.label :street_address %><br />
-      <%= f.text_field :street_address, autofocus: true %>
+      <%= f.label :street_address %>
+      <%= f.text_field :street_address %>
     </div>
 
     <div class="field">
-      <%= f.label :locality %>(City)<br />
-      <%= f.text_field :locality, autofocus: true %>
+      <%= f.label :locality %>(City)
+      <%= f.text_field :locality %>
     </div>
 
     <div class="field">
-      <%= f.label :postal_code %><br />
-      <%= f.text_field :postal_code, autofocus: true %>
+      <%= f.label :postal_code %>
+      <%= f.text_field :postal_code %>
     </div>
 
     <div class="field">
-      <%= f.label :region %>(2-letter State abbreviation)<br />
-      <%= f.text_field :region, autofocus: true %>
+      <%= f.label :region %>(2-letter State abbreviation)
+      <%= f.text_field :region %>
     </div>
 
     <div class="field">
-      <%= f.label :account_number %><br />
-      <%= f.text_field :account_number, autofocus: true %>
+      <%= f.label :account_number %>
+      <%= f.text_field :account_number %>
     </div>
 
     <div class="field">
-      <%= f.label :routing_number %><br />
-      <%= f.text_field :routing_number, autofocus: true %>
+      <%= f.label :routing_number %>
+      <%= f.text_field :routing_number %>
     </div>
 
     <div class="actions">
-      <%= f.submit "Sign up" %>
+      <%= f.submit "Sign up", class: "button" %>
     </div>
   <% end %>
 

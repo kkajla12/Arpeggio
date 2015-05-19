@@ -47,23 +47,40 @@ textarea {
 .button {
   background: rgba(39, 174, 96, 1);
   border: none;
-  padding: 7px 15px;
   color: white;
+  display: block;
   font-family: "Lato";
   font-weight: 100;
   font-size: 15px;
-}
-  #button-index {
-    margin: 20px auto 0 auto;
-    padding: 28px 60px;
-    display: block;
-    font-size: 40px;
+  margin: auto;
+  padding: 7px 15px;
+
+  &.button-big {
+    min-width: 250px;
+    height: auto;
+    margin: 60px auto;
+    padding: 20px 40px;
+    font-size: 28px;
   }
-    #button-index a {
+  &.button-danger {
+    background-color: rgba(231, 76, 60, 0.8);
+  }
+  &.button-danger-link {
+    background: none;
+    color: rgba(231, 76, 60, 0.8);
+    font-weight: normal;
+  }
+}
+  a.button {
+    text-decoration: none;
+    width: 40%;
+    text-align: center;
+    box-sizing: border-box;
+
+    &, &:visited, &:hover {
       color: white;
-      text-decoration: none;
-      font-size: 40px;
     }
+  }
 
 .center {
   text-align: center;
@@ -76,29 +93,23 @@ textarea {
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
   font-family: 'Lato', Helvetica, sans-serif;
-}
-
-h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   margin-bottom: 30px;
   text-align: center;
 }
-
-h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 15px;
-  text-align: center;
-  font-weight: normal;
-  color: #777;
-}
-
-h5 {
-  text-align: center;
-}
+  h1 {
+    font-size: 40px;
+    color: #555;
+  }
+  h2 {
+    font-size: 30px;
+    color: #777;
+  }
+  h5 {
+    text-align: center;
+  }
 
 p {
   font-size: 1.1em;
@@ -110,6 +121,9 @@ a {
 }
   a:visited {
     color: rgb(39, 174, 96);
+  }
+  a:hover {
+    color: red;
   }
 
 /* header */
@@ -190,20 +204,7 @@ a {
 .container {
   width: 80%;
   margin: auto;
-}
-
-.container .form-wrapper a {
-  text-align: center;
-  display: block;
-}
-  .container .form-wrapper a:hover {
-    background-color: transparent;
-    color: red;
-  }
-
-.container a:hover {
-  background-color: transparent;
-  color: red;
+  margin-bottom: 50px;
 }
 
 .container .product {
@@ -213,18 +214,23 @@ a {
   margin-top: 40px;
 }
 
-/* temp style - very gross */
-.container .product-action {
-  text-align: center;
-  margin-top: 10px;
+.product-price-wrapper, .product-status-wrapper {
+  color: #999;
 }
-  .container .product-action a {
-    color: #fff;
-    text-decoration: none;
-  }
-  .container .product-action form {
-    display: inline-block;
-  }
+.product-price {
+  color: #000;
+}
+.product-status-available {
+  color: rgba(39, 174, 96, 0.8);
+}
+.product-status-rented {
+  color: rgba(231, 76, 60, 0.8);
+}
+
+.product-type {
+  color: #777;
+  font-style: italic;
+}
 
 .container-img {
   width: 250px;
@@ -241,24 +247,167 @@ a {
 
 /* forms */
 
+.form-wrapper a {
+  text-align: center;
+  display: block;
+  margin-top: 40px;
+}
+
 form {
   margin: auto;
   text-align: center;
 }
+  form .field {
+    margin: 15px 0;
+  }
+    form label, form input, form textarea {
+      display: inline-block;
+      height: 36px;
+    }
+      form label {
+        color: #aaa;
+      }
+        form .field label {
+          width: 11em;
+          margin-right: 10px;
+          text-align: right;
+        }
+      form input, form select, form textarea {
+        width: 160px;
+      }
+        form input[type="text"], form input[type="email"], form input[type="password"] {
+          text-indent: 10px;
+        }
+        form textarea {
+          padding: 10px;
+          box-sizing: border-box;
+          height: 100px;
+        }
+    form .field.field-checkbox {
+      label {
+        width: auto;
+        margin-left: -7em;
+      }
+      input[type="checkbox"] {
+        height: 14px;
+        width: 14px;
+      }
+    }
+    form .field.field-file {
+      label {
+        width: 18em;
+      }
+      input {
+        width: 250px;
+      }
+    }
 
-form input {
-  margin-top: 5px;
-  margin-bottom: 10px;
+  form .field_with_errors {
+    display: inline;
+  }
+    form .field_with_errors input {
+      outline: 1px solid rgba(255, 0, 0, 0.7);
+    }
+
+.product-action .button {
+    width: 140px;
 }
 
-/* TODO: REMOVE LATER */
+.product-search-form {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+
+  input {
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  input[type="text"] {
+    width: 300px;
+  }
+  .button {
+    display: inline-block;
+    width: 120px;
+  }
+
+  select {
+      -webkit-appearance: none;
+         -moz-appearance: none;
+              appearance: none;
+      background: url(filter.png);
+      background-repeat: no-repeat;
+      background-size: 24px;
+      background-position-y: 6px;
+      color: transparent;
+      cursor: pointer;
+      outline: none;
+      border: none;
+      width: 28px;
+      margin-left: -28px;
+  }
+}
+
+#error_explanation {
+  max-width: 400px;
+  min-width: 250px;
+  border: 1px solid rgba(255, 0, 0, 0.7);
+  background-color: #fdf0f0;
+  margin: 40px auto;
+
+  h2 {
+    text-align: left;
+    font-weight: normal;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: 0px;
+    background-color: rgba(255, 0, 0, 0.7);
+    color: #fff;
+    text-transform: none;
+  }
+
+  ul li {
+    font-size: 12px;
+    text-align: left;
+  }
+}
+
 table {
   margin: auto;
+
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  border: 1px solid #cbcbcb;
+}
+thead {
+  background: #e0e0e0;
+  text-align: left;
+}
+  th, td {
+    border-left: 1px solid #cbcbcb;
+    border-width: 0 0 0 1px;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible;
+    padding: .5em 1em;
+  }
+    td:first-child, th:first-child {
+      border-left-width: 0;
+    }
+    td input[type="number"] {
+      display: block;
+      width: 50px;
+      font-size: 18px;
+      height: auto;
+      text-indent: 5px;
+      margin: auto;
+    }
+tr:nth-child(2n) {
+  background: #f2f2f2;
 }
 
-td {
-  padding: 2px;
-}
 
 /* TODO: serve from S3 */
 .cover-image-wrapper {
@@ -293,5 +442,10 @@ td {
   background-size: 48px;
   background-position-y: 17px;
   background-position-x: 23px;
-}
 
+  // These *cannot* be placed in a list together. The browser will not recognize one selector and thus reject the rule.
+  &::-webkit-input-placeholder  { color: #eee; }
+  &:-moz-placeholder { color: #eee; }
+  &::-moz-placeholder { color: #eee; }
+  &:-ms-input-placeholder { color: #eee; }
+}
