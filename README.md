@@ -8,7 +8,7 @@ Arpeggio is a peer-to-peer musical instrument and equipment rental marketplace. 
 
 ## Team
 
-<a href="https://github.com/rhansby"><img src="https://avatars1.githubusercontent.com/u/1788374?v=3&s=100" width="100" height="100"></a> | <a href="https://github.com/kkajla12"><img src="https://avatars1.githubusercontent.com/u/4977332?v=3&s=100" width="100" height="80"></a> | <a href="https://github.com/m-vojvodic"><img src="https://avatars1.githubusercontent.com/u/6474701?v=3&s=100" width="100" height="80"></a> | <a href="https://github.com/PeanutJ"><img src="https://avatars1.githubusercontent.com/u/9071142?v=3&s=100" width="100" height="100"></a>
+<a href="https://github.com/rhansby"><img src="https://avatars1.githubusercontent.com/u/1788374?v=3&s=100" width="100" height="100"></a> | <a href="https://github.com/kkajla12"><img src="https://avatars1.githubusercontent.com/u/4977332?v=3&s=100" width="100" height="100"></a> | <a href="https://github.com/m-vojvodic"><img src="https://avatars1.githubusercontent.com/u/6474701?v=3&s=100" width="100" height="100"></a> | <a href="https://github.com/PeanutJ"><img src="https://avatars1.githubusercontent.com/u/9071142?v=3&s=100" width="100" height="100"></a>
 --- | --- | --- | ---
 Ryan Hansberry | Karan Kajla | Marko Vojvodić | Janet (Qianwen Zhang)
 
