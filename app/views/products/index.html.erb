@@ -2,7 +2,7 @@
   <!-- search, create new products -->
   <!-- TODO: fix -->
   <button class="button">
-    <%= link_to 'New Product', new_product_path %>
+    <%= link_to 'New Product', new_product_path, 'data-no-turbolink' => true %>
   </button>
   <%= form_tag(products_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :keyword, params[:keyword], placeholder: "Search Products" %>
