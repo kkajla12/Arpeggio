@@ -9,11 +9,31 @@
 User.delete_all
 Product.delete_all
 
-User.create(email: "user1@arpeggio.com", password: "password")
-User.create(email: "user2@arpeggio.com", password: "password")
-User.create(email: "user3@arpeggio.com", password: "password")
-User.create(email: "user4@arpeggio.com", password: "password")
-User.create(email: "user5@arpeggio.com", password: "password")
+User.create(email: "user1@arpeggio.com", password: "password",
+            first_name: "user", last_name: "one", date_of_birth: "1994-03-14",
+            locality: "Los Angeles", postal_code: "90024", region: "CA",
+            street_address: "1234 Hello Street", account_number: "1123581321",
+            routing_number: "071101307")
+User.create(email: "user2@arpeggio.com", password: "password",
+            first_name: "user", last_name: "two", date_of_birth: "1990-06-28",
+            locality: "Los Angeles", postal_code: "90024", region: "CA",
+            street_address: "1234 Goodbye Street", account_number: "1123581321",
+            routing_number: "071101307")
+User.create(email: "user3@arpeggio.com", password: "password",
+            first_name: "user", last_name: "three", date_of_birth: "1987-04-20",
+            locality: "Los Angeles", postal_code: "90024", region: "CA",
+            street_address: "1234 Gayley Avenue", account_number: "1123581321",
+            routing_number: "071000013")
+User.create(email: "user4@arpeggio.com", password: "password",
+            first_name: "user", last_name: "four", date_of_birth: "1992-02-18",
+            locality: "Los Angeles", postal_code: "90024", region: "CA",
+            street_address: "1234 Hello Street", account_number: "1123581321",
+            routing_number: "071101307")
+User.create(email: "user5@arpeggio.com", password: "password",
+            first_name: "user", last_name: "five", date_of_birth: "1993-12-25",
+            locality: "Los Angeles", postal_code: "90024", region: "CA",
+            street_address: "1234 Gayley Avenue", account_number: "1123581321",
+            routing_number: "071000013")
 
 (0..4).each do |i|
   Product.create!(name: "Marshall 2x12 Speaker Cabinet",
@@ -45,7 +65,3 @@ User.create(email: "user5@arpeggio.com", password: "password")
     },
     price: 80.00, deposit: 550, classification: "keyboard", user_id: (i + 1), image: File.open("#{Rails.root}/public/uploads/yamaha_keyboard.jpg"))
 end
-
-
-
-
