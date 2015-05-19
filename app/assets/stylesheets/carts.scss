@@ -1,3 +1,22 @@
 // Place all the styles related to the Carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.total-header {
+    margin: 50px auto;
+    font-size: 25px;
+    color: #777;
+
+    .total {
+        color: #000;
+        transition: background-color 0.2s ease-in;
+
+        &.active {
+            background-color: rgba(255, 0, 0, 0.2);
+        }
+    }
+}
+
+.form-wrapper .button {
+    margin: 10px auto;
+}
