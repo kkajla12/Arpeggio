@@ -8,21 +8,9 @@ Arpeggio is a peer-to-peer musical instrument and equipment rental marketplace. 
 
 ## Team
 
-* Ryan Hansberry:
-
-![Ryan Hansberry](https://avatars1.githubusercontent.com/u/1788374?v=3&amp;s=100 "Ryan Hansberry")
-
-* Karan Kajla:
-
-![Karan Kajla](https://avatars1.githubusercontent.com/u/4977332?v=3&amp;s=100 "Karan Kajla")
-
-* Marko Vojvodić:
-
-![Marko Vojvodić](https://avatars3.githubusercontent.com/u/6474701?v=3&amp;s=100 "Marko Vojvodić")
-
-* Janet (Qianwen Zhang):
-
-![Janet (Qianwen Zhang)](https://avatars3.githubusercontent.com/u/9071142?v=3&amp;s=100 "Janet (Qianwen Zhang)")
+<a href="https://github.com/rhansby"><img src="https://avatars1.githubusercontent.com/u/1788374?v=3&s=100" width="100" height="100"></a> | <a href="https://github.com/kkajla12"><img src="https://avatars1.githubusercontent.com/u/4977332?v=3&s=100" width="100" height="80"></a> | <a href="https://github.com/m-vojvodic"><img src="https://avatars1.githubusercontent.com/u/6474701?v=3&s=100" width="100" height="80"></a> | <a href="https://github.com/PeanutJ"><img src="https://avatars1.githubusercontent.com/u/9071142?v=3&s=100" width="100" height="100"></a>
+--- | --- | --- | ---
+Ryan Hansberry | Karan Kajla | Marko Vojvodić | Janet (Qianwen Zhang)
 
 ## Installation
 
@@ -31,7 +19,7 @@ First, install Ruby on Rails: [https://gorails.com/setup/](https://gorails.com/s
 To ensure all necessary dependencies from the Gemfile are available to the application, run:
 
 ```
-bundle install
+$ bundle install
 ```
 
 ## Usage
@@ -39,8 +27,8 @@ bundle install
 To begin the application locally, run:
 
 ```
-rake db:reset
-rails server
+$ rake db:reset
+$ rails server
 ```
 
 If deploying on EC2 or other cloud hosting services, be sure to have the
