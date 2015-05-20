@@ -92,12 +92,11 @@
             var pos = marker.getPosition();
             document.getElementById('product_lat').value = pos.lat();
             document.getElementById('product_lon').value = pos.lng();
-            console.log("end drag: "+pos.lat()+" "+pos.lng());
+            map.setCenter(pos);
           });
 
           google.maps.event.addListener(marker, 'dragstart', function(){
             var pos = marker.getPosition();
-            console.log("start drag: "+pos.lat()+" "+pos.lng());
           });
 
         }, function() {
@@ -116,6 +115,7 @@
         var content = 'Error: Your browser doesn\'t support geolocation.';
       }
 
+      // TODO: set to user's default city
       var options = {
         map: map,
         position: new google.maps.LatLng(60, 105),

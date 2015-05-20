@@ -14,7 +14,5 @@ class CreateProducts < ActiveRecord::Migration
       t.decimal :lat, precision: 15, scale: 10
       t.decimal :lon, precision: 15, scale: 10
     end
-
-    # TODO: add index on geospatial attributes?
   end
 end
