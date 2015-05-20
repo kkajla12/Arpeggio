@@ -1,9 +1,3 @@
 language: ruby
 rvm:
   - "2.1.3"
-
-before_script:
-  - psql -c 'create database test;' -U postgres
-  - psql -U postgres -c 'create extension postgis;'
-  - psql -U postgres -c "create role arpeggio with superuser login password 'password';"
-  - psql -U postgres -c "alter role arpeggio with createdb;"

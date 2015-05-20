@@ -50,7 +50,7 @@
   <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyC0VbV2Pcv6qPNDZAS5onMDz9qJZtwUJz4" %>
   <script type="text/javascript">
     function initialize() {
-      var productLatLng = new google.maps.LatLng(<%= @product.lonlat.y %>, <%= @product.lonlat.x %>);
+      var productLatLng = new google.maps.LatLng(<%= @product.lat %>, <%= @product.lon %>);
 
       var mapOptions = {
         center: productLatLng,

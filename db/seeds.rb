@@ -24,7 +24,7 @@ User.create(email: "user5@arpeggio.com", password: "password")
     },
     price: 30.00, deposit: 150, classification: "speaker", user_id: (i + 1),
     image: File.open("#{Rails.root}/public/uploads/marshall_cabinet.jpg"),
-    lonlat: 'POINT(-118.450777 34.065714)')
+    lat: 34.065714, lon: -118.450777)
   Product.create!(name: "Gibson SG Cherry Finish",
     description: %{
       This is a sample product listing for this particular product.
@@ -33,7 +33,7 @@ User.create(email: "user5@arpeggio.com", password: "password")
     },
     price: 65.00, deposit: 350, classification: "guitar", user_id: (i + 1),
     image: File.open("#{Rails.root}/public/uploads/gibson_sg.jpg"),
-    lonlat: 'POINT(-118.451839 34.066967)')
+    lat: 34.066967, lon: -118.451839)
   Product.create!(name: "Sennheiser E835S Performance Vocal Microphone",
     description: %{
       This is a sample product listing for this particular product.
@@ -42,7 +42,7 @@ User.create(email: "user5@arpeggio.com", password: "password")
     },
     price: 15.00, deposit: 50, classification: "mic", user_id: (i + 1),
     image: File.open("#{Rails.root}/public/uploads/sennheiser_mic.jpg"),
-    lonlat: 'POINT(-118.448019 34.063047)')
+    lat: 34.063047, lon: -118.448019)
   Product.create!(name: "Yamaha CP-300 88-Key Stage Piano",
     description: %{
       This is a sample product listing for this particular product.
@@ -51,7 +51,7 @@ User.create(email: "user5@arpeggio.com", password: "password")
     },
     price: 80.00, deposit: 550, classification: "keyboard", user_id: (i + 1),
     image: File.open("#{Rails.root}/public/uploads/yamaha_keyboard.jpg"),
-    lonlat: 'POINT(-118.565050 34.045829)')
+    lat: 34.045829, lon: -118.565050)
 end
 
 

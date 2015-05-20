@@ -3,9 +3,8 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
-# use Postgres and PostGIS as the database for active record
-gem 'pg', '0.18.2'
-gem 'activerecord-postgis-adapter', '3.0.0.beta5'
+# use MySQL2 as the database for active record
+gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

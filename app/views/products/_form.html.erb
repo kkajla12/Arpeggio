@@ -39,9 +39,8 @@
     <%= f.label :image %><br>
     <%= f.file_field :image, :required => true %>
   </div>
-  <div class="field">
-    <%= f.hidden_field :lonlat %>
-  </div>
+  <%= f.hidden_field :lat %>
+  <%= f.hidden_field :lon %>
   <div class="actions">
     <%= f.submit %>
   </div>
@@ -56,6 +55,8 @@
     // Note: This example requires that you consent to location sharing when
     // prompted by your browser. If you see a blank space instead of the map, this
     // is probably because you have denied permission for location sharing.
+
+    // TODO: allow for choosing location
 
     var map;
 
@@ -81,7 +82,8 @@
           map.setCenter(pos);
 
           // setting location
-          document.getElementById('product_lonlat').value = "POINT(" + pos.lng() + " " + pos.lat() + ")";
+          document.getElementById('product_lat').value = pos.lat();
+          document.getElementById('product_lng').value = pos.lng();
         }, function() {
           handleNoGeolocation(true);
         });

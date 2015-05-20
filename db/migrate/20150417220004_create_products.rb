@@ -11,9 +11,10 @@ class CreateProducts < ActiveRecord::Migration
       t.timestamps null: false
 
       # geospatial
-      t.st_point :lonlat, geographic: true
+      t.decimal :lat, precision: 15, scale: 10
+      t.decimal :lon, precision: 15, scale: 10
     end
 
-    add_index :products, :lonlat, using: :gist
+    # TODO: add index on geospatial attributes?
   end
 end

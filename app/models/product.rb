@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  validates :name, :description, :price, :deposit, :classification, :lonlat, presence: true
+  validates :name, :description, :price, :deposit, :classification, :lat, :lon, presence: true
   validates :price, numericality: {greater_than_or_equal_to: 0.01}
   validate :classification_must_match_one_of_these_values
 
