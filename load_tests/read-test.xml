@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<!DOCTYPE tsung SYSTEM "/home/ec2-user/opt/tsung-1.5.0/share/tsung/tsung-1.0.dtd">
+<tsung loglevel="notice" version="1.0">
+
+  <!-- Client side setup -->
+  <clients>
+    <client host="localhost" use_controller_vm="true" maxusers='15000'/>
+  </clients>
+
+  <!-- Server side setup -->
+  <servers>
+    <server host="ec2-52-10-52-57.us-west-2.compute.amazonaws.com" port="80" type="tcp" />
+  </servers>
+
+
+  <load>
+    <arrivalphase phase="1" duration="30" unit="second">
+      <users arrivalrate="1" unit="second"></users>
+    </arrivalphase>
+    <!--<arrivalphase phase="2" duration="30" unit="second">
+      <users arrivalrate="2" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="3" duration="30" unit="second">
+      <users arrivalrate="4" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="4" duration="30" unit="second">
+      <users arrivalrate="8" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="5" duration="30" unit="second">
+      <users arrivalrate="16" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="6" duration="30" unit="second">
+      <users arrivalrate="32" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="7" duration="30" unit="second">
+      <users arrivalrate="64" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="8" duration="30" unit="second">
+      <users arrivalrate="128" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="9" duration="30" unit="second">
+      <users arrivalrate="256" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="10" duration="30" unit="second">
+      <users arrivalrate="512" unit="second"></users>
+    </arrivalphase>-->
+  </load>
+
+  <options>
+    <!-- Set connection timeout to 2 seconds -->
+    <option name="glocal_ack_timeout" value="2000"></option>
+
+    <option type="ts_http" name="user_agent">
+      <user_agent probability="100">Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4</user_agent>
+    </option>
+  </options>
+
+
+  <sessions>
+    <session name="http-example" probability="100" type="ts_http">
+      <!-- start out at the dashboard. -->
+      <request>
+        <http url="/" version="1.1" method="GET"/>
+      </request>
+      <thinktime value="1" random="true"/>
+
+      <!--user sign up-->
+      <request>
+        <dyn_variable name="authenticity_token"/>
+        <http url="/users/sign_up" version="1.1" method="GET"/>
+      </request>
+      <thinktime value="2" random="true"/>
+
+      <!-- declare all random variables that will be used for sign up -->
+      <setdynvars sourcetype="random_number" start="1000" end="9999999">
+        <var name="random_email_id"/>
+      </setdynvars>
+      <setdynvars sourcetype="random_string" length="14">
+        <var name="random_first_name"/>
+      </setdynvars>
+      <setdynvars sourcetype="random_string" length="14">
+        <var name="random_last_name"/>
+      </setdynvars>
+
+      <!-- create the POST request to create users -->
+      <request subst="true">
+        <http
+          url="/users"
+          version="1.1"
+          method="POST"
+          contents="user%5Bfirst_name%5D=%%_random_first_name%%&amp;
+                    user%5Blast_name%5D=%%_random_last_name%%&amp;
+                    user%5Bdate_of_birth%5D=1990-01-01&amp;
+                    user%5Bemail%5D=testuser%%_random_email_id%%@test.com&amp;
+                    user%5Bpassword%5D=password&amp;
+                    user%5Bpassword_confirmation%5D=password&amp;
+                    user%5Bstreet_address%5D=1234%20Gayley%20Avenue&amp;
+                    user%5Blocality%5D=Los%20Angeles&amp;
+                    user%5Bpostal_code%5D=90024&amp;
+                    user%5Bregion%5D=CA&amp;
+                    user%5Baccount_number%5D=1123581321&amp;
+                    user%5Brouting_number%5D=071101307&amp;
+                    authenticity_token=%%_authenticity_token%%
+                    commit=Sign up" />
+      </request>
+      <thinktime value="2" random="true"/>
+
+
+      <!-- browse the product listing page for 2 seconds -->
+      <request>
+        <http url="/products" version="1.1" method="GET"/>
+      </request>
+      <thinktime value="2" random="true"/>
+
+      <!-- browse a specific product detail page for 2 seconds -->
+      <setdynvars sourcetype="random_number" start="1" end="20">
+        <var name="random_product_id"/>
+      </setdynvars>
+      <request subst="true">
+        <http url="/products/%%_random_product_id%%" version="1.1" method="GET"/>
+      </request>
+      <thinktime value="2" random="true"/>
+
+      <!-- add product to cart -->
+      <request subst="true">
+        <http url="/line_items%3Fproduct_id=%%_random_product_id%%"
+          version="1.1"
+          method="POST"
+          contents="authenticity_token=%%_authenticity_token%%"/>
+      </request>
+      <thinktime value="2" random="true"/>
+
+      <!-- check out the cart -->
+      <request>
+        <dyn_variable name="authenticity_token"/>
+        <http url="/orders/new%3F" version="1.1" method="GET" />
+      </request>
+      <thinktime value="2" random="true"/>
+
+      <!-- place the order -->
+      <request>
+        <http url="/orders"
+          version="1.1"
+          method="POST"
+          contents="order%5Bname%5D=name&amp;
+                    order%5Baddress%5D=address&amp;
+                    order%5Bemail%5D=email&amp;
+                    payment_method_nonce=fake-valid-nonce&amp;
+                    authenticity_token=%%_authenticity_token%%
+                    commit=Place Order"/>
+      </request>
+      <thinktime value="2" random="true"/>
+
+      <setdynvars sourcetype="eval" code="fun( {Pid, DynVars} ) ->
+        io:format([126, $p, 126, $n, 126, $n], [DynVars]),
+        ok end.">
+        <var name="dump"/>
+      </setdynvars>
+
+    </session>
+  </sessions>
+
+</tsung>

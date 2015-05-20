@@ -61,7 +61,7 @@ class OrdersController < ApplicationController
         if @order.save
           @order.line_items.each do |item|
             amount = '%.2f' % (item.total_price * 0.20)  # we take a 20% cut
-            puts amount
+            puts "this transaction: $#{amount}"
             nonce = params[:payment_method_nonce]
             result = Braintree::Transaction.sale(
               :merchant_account_id => item.product.user.merchant_id,
@@ -69,6 +69,11 @@ class OrdersController < ApplicationController
               :payment_method_nonce => nonce,
               :service_fee_amount => "#{amount}"
             )
+            if result.success?
+              puts "transaction successful!"
+            else
+              puts result.message
+            end
           end
 
           Cart.destroy(session[:cart_id])
