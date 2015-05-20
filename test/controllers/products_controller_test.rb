@@ -22,7 +22,7 @@ class ProductsControllerTest < ActionController::TestCase
   test "should create product" do
     test_file = fixture_file_upload('files/test.gif','image/gif')
     assert_difference('Product.count') do
-      post :create, product: { deposit: @product.deposit, description: @product.description, name: @product.name, price: @product.price, classification: @product.classification, lonlat: @product.lonlat, :image => test_file }
+      post :create, product: { deposit: @product.deposit, description: @product.description, name: @product.name, price: @product.price, classification: @product.classification, lat: @product.lat, lon: @product.lon, :image => test_file }
     end
 
     assert_redirected_to product_path(assigns(:product))
@@ -39,7 +39,7 @@ class ProductsControllerTest < ActionController::TestCase
   end
 
   test "should update product" do
-    patch :update, id: @product, product: { deposit: @product.deposit, description: @product.description, name: @product.name, price: @product.price, classification: @product.classification, lonlat: @product.lonlat }
+    patch :update, id: @product, product: { deposit: @product.deposit, description: @product.description, name: @product.name, price: @product.price, classification: @product.classification, lat: @product.lat, lon: @product.lon }
     assert_redirected_to product_path(assigns(:product))
   end
 

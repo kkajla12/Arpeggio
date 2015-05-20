@@ -7,7 +7,8 @@ one:
   deposit: 200
   classification: "Guitar"
   user_id: 1
-  lonlat: 'POINT(-118.450777 34.065714)'
+  lat: 34.065714
+  lon: -118.450777
 
 two:
   name: "Bass"
@@ -16,4 +17,5 @@ two:
   deposit: 210
   classification: "Guitar"
   user_id: 2
-  lonlat: 'POINT(-118.565050 34.045829)'
+  lat: 34.045829
+  lon: -118.565050

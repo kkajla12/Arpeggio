@@ -39,8 +39,12 @@
     <%= f.label :image %><br>
     <%= f.file_field :image, :required => true %>
   </div>
-  <%= f.hidden_field :lat %>
+  <div class="field">
+    <%= f.hidden_field :lat %>
+  </div>
+  <div class="field">
   <%= f.hidden_field :lon %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
@@ -55,10 +59,8 @@
     // Note: This example requires that you consent to location sharing when
     // prompted by your browser. If you see a blank space instead of the map, this
     // is probably because you have denied permission for location sharing.
-
-    // TODO: allow for choosing location
-
     var map;
+    var marker;
 
     function initialize() {
       var mapOptions = {
@@ -73,17 +75,31 @@
           var pos = new google.maps.LatLng(position.coords.latitude,
                                            position.coords.longitude);
 
-          var infowindow = new google.maps.InfoWindow({
+          marker = new google.maps.Marker({
             map: map,
             position: pos,
-            content: 'Location found using HTML5.'
+            draggable: true,
+            content: 'Set product location!'
           });
 
           map.setCenter(pos);
 
           // setting location
           document.getElementById('product_lat').value = pos.lat();
-          document.getElementById('product_lng').value = pos.lng();
+          document.getElementById('product_lon').value = pos.lng();
+
+          google.maps.event.addListener(marker, 'dragend', function(){
+            var pos = marker.getPosition();
+            document.getElementById('product_lat').value = pos.lat();
+            document.getElementById('product_lon').value = pos.lng();
+            console.log("end drag: "+pos.lat()+" "+pos.lng());
+          });
+
+          google.maps.event.addListener(marker, 'dragstart', function(){
+            var pos = marker.getPosition();
+            console.log("start drag: "+pos.lat()+" "+pos.lng());
+          });
+
         }, function() {
           handleNoGeolocation(true);
         });
