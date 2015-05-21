@@ -6,9 +6,9 @@ one:
   price: 420
   deposit: 200
   classification: "Guitar"
-  rented: false
-  image_url: "http://test.com/images/1.gif"
   user_id: 1
+  lat: 34.065714
+  lon: -118.450777
 
 two:
   name: "Bass"
@@ -16,6 +16,6 @@ two:
   price: 430
   deposit: 210
   classification: "Guitar"
-  rented: false
-  image_url: "http://test.com/images/2.gif"
   user_id: 2
+  lat: 34.045829
+  lon: -118.565050
