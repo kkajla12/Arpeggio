@@ -18,6 +18,11 @@
     .search-bar {
         font-size: 32px;
     }
+
+    .container-img-map {
+        flex-direction: column;
+        -webkit-flex-direction: column;
+    }
 }
 
 @media (max-width: 600px) {
@@ -54,5 +59,12 @@
         font-size: 20px;
         height: 65px;
         text-indent: 65px;
+    }
+}
+
+@media (max-width: 400px) {
+    #map-canvas {
+        width: 250px;
+        height: 250px;
     }
 }

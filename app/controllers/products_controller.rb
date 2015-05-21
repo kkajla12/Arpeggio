@@ -48,6 +48,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user_id = current_user.id
+    @product.rented = false
 
     respond_to do |format|
       if @product.save
@@ -92,6 +93,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:id, :name, :description, :price, :deposit, :classification, :rented, :image)
+      params.require(:product).permit(:id, :name, :description, :price, :deposit, :classification, :image, :lat, :lon)
     end
 end

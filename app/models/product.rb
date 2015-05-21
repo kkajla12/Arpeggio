@@ -1,11 +1,11 @@
 class Product < ActiveRecord::Base
-  validates :name, :description, :price, :deposit, :classification, presence: true
+  validates :name, :description, :price, :deposit, :classification, :lat, :lon, presence: true
   validates :price, numericality: {greater_than_or_equal_to: 0.01}
   validate :classification_must_match_one_of_these_values
 
   belongs_to :user
 
-   # paperclip
+  # paperclip
   has_attached_file :image
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 

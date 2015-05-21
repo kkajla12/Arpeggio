@@ -81,6 +81,10 @@ textarea {
       color: white;
     }
   }
+  a.button#edit {
+    margin-top: 15px;
+    width: 160px;
+  }
 
 .center {
   text-align: center;
@@ -232,6 +236,18 @@ a {
   font-style: italic;
 }
 
+.container-img-map {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+#map-canvas {
+  width: 350px;
+  height: 350px;
+  margin: auto;
+}
+
 .container-img {
   width: 250px;
   height: 250px;
@@ -299,6 +315,11 @@ form {
       }
       input {
         width: 250px;
+      }
+    }
+    form .field.map {
+      label {
+        text-align: center;
       }
     }
 

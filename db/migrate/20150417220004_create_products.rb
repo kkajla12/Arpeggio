@@ -9,6 +9,10 @@ class CreateProducts < ActiveRecord::Migration
       t.boolean :rented, default: false
 
       t.timestamps null: false
+
+      # geospatial
+      t.decimal :lat, precision: 15, scale: 10
+      t.decimal :lon, precision: 15, scale: 10
     end
   end
 end
