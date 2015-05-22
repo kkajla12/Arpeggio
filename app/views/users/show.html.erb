@@ -18,7 +18,7 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.id %></td>
-        <td><%= link_to product.name, product %></td>
+        <td><%= link_to product.name, product, 'data-no-turbolink' => true %></td>
         <td><%= product.price %></td>
         <td><%= product.deposit %></td>
         <td><%= product.classification %></td>
@@ -33,5 +33,5 @@
   </tbody>
 </table>
 
-<%= link_to 'Edit', edit_user_registration_path(@user)  if user_signed_in? && (current_user.id == @user.id) %>
+<%= link_to 'Edit', edit_user_registration_path(@user), class: "button", id: "edit" if user_signed_in? && (current_user.id == @user.id) %>
 

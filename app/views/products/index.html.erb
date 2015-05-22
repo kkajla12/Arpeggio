@@ -2,11 +2,16 @@
   <%= form_tag(products_path, :method => "get", class: "product-search-form") do %>
     <%= text_field_tag :keyword, params[:keyword], placeholder: "Search Products" %>
     <%= select_tag :classification,
-        options_for_select([["Filter by...", ""], "guitar", "bass", "keyboard",
+        options_for_select([["Filter by type...", ""], "guitar", "bass", "keyboard",
                             "violin", "accessory", "speaker",
                             "combo amplifier", "amplifier cabinet",
                             "amplifier head", "cable", "mic"],
-                            selected: params[:classification] ? params[:classification] : "Filter by...")
+                            selected: params[:classification] ? params[:classification] : "Filter by type...")
+    %>
+    <%= select_tag :distance,
+        options_for_select([["Filter by mileage...", ""],
+                            5, 10, 25, 50, 100],
+                            selected: params[:distance] ? params[:distance] : "Filter by mileage...")
     %>
     <%= submit_tag "Search", :name => nil, class: "button" %>
   <% end %>

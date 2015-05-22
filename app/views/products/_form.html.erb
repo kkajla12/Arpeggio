@@ -33,7 +33,7 @@
   </div>
   <div class="field field-file">
     <%= f.label :image %>
-    <%= f.file_field :image %>
+    <%= f.file_field :image, :required => true if current_page?(new_product_path) %>
   </div>
   <div class="field">
     <%= f.label :description %>
@@ -73,9 +73,13 @@
       // Try HTML5 geolocation
       if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-          var pos = new google.maps.LatLng(position.coords.latitude,
-                                           position.coords.longitude);
-
+          <% if current_page?(new_product_path) %>
+            var pos = new google.maps.LatLng(position.coords.latitude,
+                                             position.coords.longitude);
+          <% else %>
+            var pos = new google.maps.LatLng(<%= @product.lat %>,
+                                             <%= @product.lon %>);
+          <% end %>
           marker = new google.maps.Marker({
             map: map,
             position: pos,

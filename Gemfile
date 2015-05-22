@@ -56,3 +56,6 @@ gem 'will_paginate', '~> 3.0.6'
 
 # braintree for transactions
 gem 'braintree'
+
+# geokit to handle bounds checking
+gem 'geokit'
