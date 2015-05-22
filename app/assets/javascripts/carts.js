@@ -9,7 +9,7 @@ $(document).on('blur', '.rental-days', function(e) {
     }
 });
 
-$(document).on('keyup', '.rental-days', function(e) {
+$(document).on('keyup change', '.rental-days', function(e) {
     var value = $(this).val();
 
     if (value === '' || value < 1) {
