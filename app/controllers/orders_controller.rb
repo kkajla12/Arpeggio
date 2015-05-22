@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @user = User.find(@order.user_id)
   end
 
   # GET /orders/new
@@ -35,6 +36,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
+    @order.user_id = current_user.id
 
     # check if any products are already rented this could
     # happen if another user rents the same item before the form
@@ -60,11 +62,11 @@ class OrdersController < ApplicationController
       respond_to do |format|
         if @order.save
           @order.line_items.each do |item|
-            amount = '%.2f' % (item.total_price * 0.20)  # we take a 20% cut
+            amount = '%.2f' % (@order.line_items.first.total_price * 0.20)  # we take a 20% cut
             puts "this transaction: $#{amount}"
             nonce = params[:payment_method_nonce]
             result = Braintree::Transaction.sale(
-              :merchant_account_id => item.product.user.merchant_id,
+              :merchant_account_id => @order.line_items.first.product.user.merchant_id,
               :amount => "#{@cart.total_price}",
               :payment_method_nonce => nonce,
               :service_fee_amount => "#{amount}"

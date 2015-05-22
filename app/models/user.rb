@@ -7,8 +7,9 @@ class User < ActiveRecord::Base
             :locality, :postal_code, :region, :account_number,
             :routing_number, presence: true
   has_many :products, dependent: :destroy
+  has_many :orders, dependent: :destroy
   has_and_belongs_to_many :roles
-  before_destroy :ensure_not_referenced_by_any_product
+  before_destroy :ensure_not_referenced_by_any_product, :ensure_not_referenced_by_any_order
   after_create :create_braintree_merchant_account
 
   def role?( role )
@@ -21,6 +22,15 @@ class User < ActiveRecord::Base
         return true
       else
         errors.add(:base, 'Products present')
+        return false
+      end
+    end
+
+    def ensure_not_referenced_by_any_order
+      if orders.empty?
+        return true
+      else
+        errors.add(:base, 'Orders present')
         return false
       end
     end

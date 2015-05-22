@@ -1,19 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @order.name %>
-</p>
+<% if user_signed_in? && (current_user.id == @user.id) %>
+  <h1>Order <%= @order.id %> on <%= @order.created_at.strftime("%b %d, %Y") %></h1>
+  <table>
+    <thead>
+      <tr>
+        <td>Product Name</td>
+        <td>Duration</td>
+        <td>Daily Price</td>
+        <td>Security Deposit</td>
+        <td>Classification</td>
+        <td>View</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.line_items.each do |item| %>
+        <tr>
+          <td><%= item.product.name %></td>
+          <td><%= item.duration %> days</td>
+          <td>$<%= "#{'%.02f' % item.product.price}" %></td>
+          <td>$<%= "#{'%.02f' % item.product.deposit}" %></td>
+          <td><%= item.product.classification %></td>
+          <td><%= link_to 'View Product', product_url(item.product) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 
-<p>
-  <strong>Address:</strong>
-  <%= @order.address %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @order.email %>
-</p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

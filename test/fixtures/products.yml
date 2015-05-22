@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   name: "Fender"
   description: "Legendary"
   price: 420
@@ -11,6 +12,7 @@ one:
   lon: -118.450777
 
 two:
+  id: 2
   name: "Bass"
   description: "Luigi"
   price: 430
