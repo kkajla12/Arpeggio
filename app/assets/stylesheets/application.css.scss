@@ -365,14 +365,14 @@ form {
       width: 28px;
   }
     select#classification {
-      background: url(filter.png);
+      background: url(http://s3-us-west-2.amazonaws.com/scalableinternetservices/Arpeggio/public/filter.png);
       background-repeat: no-repeat;
       background-size: 24px;
       background-position-y: 6px;
       margin-left: -28px;
     }
     select#distance {
-      background: url(point.png);
+      background: url(http://s3-us-west-2.amazonaws.com/scalableinternetservices/Arpeggio/public/point.png);
       background-repeat: no-repeat;
       background-size: 24px;
       background-position-y: 6px;
@@ -442,7 +442,7 @@ tr:nth-child(2n) {
 
 /* TODO: serve from S3 */
 .cover-image-wrapper {
-  background: url(splash-background.jpg) no-repeat center center fixed;
+  background: url(http://s3-us-west-2.amazonaws.com/scalableinternetservices/Arpeggio/public/splash-background.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   background-size: cover;
   position: absolute;
@@ -468,7 +468,7 @@ tr:nth-child(2n) {
 
   /* TODO: server from S3.
      Magnifying glass */
-  background-image: url(magnifying-glass.png);
+  background-image: url(http://s3-us-west-2.amazonaws.com/scalableinternetservices/Arpeggio/public/magnifying-glass.png);
   background-repeat: no-repeat;
   background-size: 48px;
   background-position-y: 17px;
