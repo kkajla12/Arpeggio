@@ -351,23 +351,33 @@ form {
   .button {
     display: inline-block;
     width: 120px;
+    margin-left: 28px;
   }
 
   select {
       -webkit-appearance: none;
          -moz-appearance: none;
               appearance: none;
-      background: url(filter.png);
-      background-repeat: no-repeat;
-      background-size: 24px;
-      background-position-y: 6px;
       color: transparent;
       cursor: pointer;
       outline: none;
       border: none;
       width: 28px;
-      margin-left: -28px;
   }
+    select#classification {
+      background: url(filter.png);
+      background-repeat: no-repeat;
+      background-size: 24px;
+      background-position-y: 6px;
+      margin-left: -28px;
+    }
+    select#distance {
+      background: url(point.png);
+      background-repeat: no-repeat;
+      background-size: 24px;
+      background-position-y: 6px;
+      margin-left: -56px;
+    }
 }
 
 #error_explanation {
