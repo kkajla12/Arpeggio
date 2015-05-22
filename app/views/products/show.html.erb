@@ -40,7 +40,7 @@
 
 <%= button_to 'Add to Cart', line_items_path(product_id: @product), class: "button" %>
 
-<%= link_to 'Edit Product', edit_product_path(@product), class: "button", id: "edit" if user_signed_in? && (current_user.id == @product.user_id)  %>
+<%= link_to 'Edit Product', edit_product_path(@product), class: "button", id: "edit", 'data-no-turbolink' => true if user_signed_in? && (current_user.id == @product.user_id)  %>
 
 <% content_for :head do %>
   <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyC0VbV2Pcv6qPNDZAS5onMDz9qJZtwUJz4" %>
