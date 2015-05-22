@@ -7,7 +7,6 @@
 one:
   email: "test@test.com"
   id: 1
-
-two:
-  email: "test2@test.com"
-  id: 2
+  street_address: '580 Portola Plaza'
+  locality: 'Los Angeles'
+  region: 'CA'

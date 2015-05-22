@@ -15,6 +15,12 @@ class ProductsController < ApplicationController
     end
 
     loc = Geokit::Geocoders::GoogleGeocoder.geocode addr
+    if loc.nil?
+      loc = Geokit::GeoLoc.new
+      loc.lat = 34.0704374
+      loc.lng = -118.4421695
+      loc.success = true
+    end
 
     # 1 degree ~ 70 miles
     if params[:distance] and !params[:distance].empty?
