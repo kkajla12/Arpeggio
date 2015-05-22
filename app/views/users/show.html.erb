@@ -1,37 +1,94 @@
-<h1><%= @user.email.split('@').first %>'s products</h1>
+<h1>Listings</h1>
 <table>
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Deposit</th>
+      <th>Product Name</th>
+      <th>Daily Price</th>
+      <th>Security Deposit</th>
       <th>Classification</th>
       <th>Rented</th>
       <% if user_signed_in? && (current_user.id == @user.id) %>
-        <th></th>
+        <th>Edit</th>
       <% end %>
     </tr>
   </thead>
 
   <tbody>
-    <% @products.each do |product| %>
+    <% if @products.empty? %>
       <tr>
-        <td><%= product.id %></td>
-        <td><%= link_to product.name, product, 'data-no-turbolink' => true %></td>
-        <td><%= product.price %></td>
-        <td><%= product.deposit %></td>
-        <td><%= product.classification %></td>
-        <td><%= product.rented %></td>
-        <% if user_signed_in? && (current_user.id == @user.id) %>
-          <td>
-            <%= link_to 'Edit', edit_product_path(product), 'data-no-turbolink' => true %>
-          </td>
-        <% end %>
+        <td>Currently no listings</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
       </tr>
+    <% else %>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= link_to product.name, product, 'data-no-turbolink' => true %></td>
+          <td>$<%= "#{'%.02f' % product.price}" %></td>
+          <td>$<%= "#{'%.02f' % product.deposit}" %></td>
+          <td><%= product.classification.capitalize %></td>
+          <td>
+            <span class="product-status-<%= product.rented ? "rented" : "available" %>">
+              <% if product.rented %>
+                Not Available
+              <% else %>
+                Available
+              <% end %>
+            </span>
+          </td>
+          <% if user_signed_in? && (current_user.id == @user.id) %>
+            <td>
+              <%= link_to 'Edit Product', edit_product_path(product), 'data-no-turbolink' => true %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
+<% if user_signed_in? && (current_user.id == @user.id) %>
+  <h1>Orders</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Order Date</th>
+        <th>Product Name</th>
+        <th>Duration</th>
+        <th>Daily Price</th>
+        <th>Security Deposit</th>
+        <th>Total Amount</th>
+        <th>View</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @orders.empty? %>
+        <tr>
+          <td>You have not ordered anything yet</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      <% else %>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.created_at.strftime("%b %d, %Y") %></td>
+            <td><%= order.line_items.first.product.name %></td>
+            <td><%= order.line_items.first.duration %> days</td>
+            <td>$<%= "#{'%.02f' % order.line_items.first.product.price}" %></td>
+            <td>$<%= "#{'%.02f' % order.line_items.first.product.deposit}" %></td>
+            <td>$<%= "#{'%.02f' % order.total_price}" %></td>
+            <td><%= link_to 'View Product', product_url(order.line_items.first.product) %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 
-<%= link_to 'Edit', edit_user_registration_path(@user), class: "button", id: "edit" if user_signed_in? && (current_user.id == @user.id) %>
-
+<%= link_to 'Edit Account', edit_user_registration_path(@user), class: "button", id: "edit" if user_signed_in? && (current_user.id == @user.id) %>

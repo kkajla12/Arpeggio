@@ -4,8 +4,4 @@ one:
   name: John Doe
   address: My Address
   email: email@email.com
-
-two:
-  name: Jane Doe
-  address: My Address
-  email: email@email.com
+  user_id: 1

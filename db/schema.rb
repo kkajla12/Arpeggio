@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518000547) do
+ActiveRecord::Schema.define(version: 20150522060637) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -37,7 +37,10 @@ ActiveRecord::Schema.define(version: 20150518000547) do
     t.string   "email",      limit: 255
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "user_id",    limit: 4
   end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "name",               limit: 255
@@ -84,16 +87,16 @@ ActiveRecord::Schema.define(version: 20150518000547) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "date_of_birth"
-    t.string   "locality"
-    t.string   "postal_code"
-    t.string   "region"
-    t.string   "street_address"
-    t.string   "account_number"
-    t.string   "routing_number"
-    t.string   "merchant_id"
+    t.string   "first_name",             limit: 255
+    t.string   "last_name",              limit: 255
+    t.string   "date_of_birth",          limit: 255
+    t.string   "locality",               limit: 255
+    t.string   "postal_code",            limit: 255
+    t.string   "region",                 limit: 255
+    t.string   "street_address",         limit: 255
+    t.string   "account_number",         limit: 255
+    t.string   "routing_number",         limit: 255
+    t.string   "merchant_id",            limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -102,5 +105,6 @@ ActiveRecord::Schema.define(version: 20150518000547) do
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "products"
+  add_foreign_key "orders", "users"
   add_foreign_key "products", "users"
 end

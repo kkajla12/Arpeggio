@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @products = @user.products
+    @orders = @user.orders
   end
 
   private
