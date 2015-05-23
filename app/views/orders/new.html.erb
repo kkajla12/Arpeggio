@@ -4,8 +4,9 @@
     <thead>
       <tr>
         <th>Item</th>
-        <th>Price/Day</th>
-        <th>Rental Duration</th>
+        <th>Price / Day</th>
+        <th>Security Deposit</th>
+        <th>Rental Duration (Day)</th>
       </tr>
     </thead>
     <tbody>
@@ -13,7 +14,8 @@
           <tr>
             <td><%= item.product.name %></td>
             <td class="item_price"><%= number_to_currency(item.product.price) %></td>
-            <td><%= item.duration %></td>
+            <td class="item_deposit"><%= number_to_currency(item.product.deposit) %></td>
+            <td class="duration-length"><%= item.duration %></td>
           </tr>
       <% end %>
     </tbody>

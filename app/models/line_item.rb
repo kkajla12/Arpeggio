@@ -4,6 +4,6 @@ class LineItem < ActiveRecord::Base
   belongs_to :cart
 
   def total_price
-    product.price * duration
+    product.price * duration + product.deposit
   end
 end

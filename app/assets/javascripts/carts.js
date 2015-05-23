@@ -22,8 +22,9 @@ $(document).on('keyup change', '.rental-days', function(e) {
     var subTotals = $.map($('.line-item'), function(lineItem) {
         var pricePerDay = parseInt($(lineItem).find('.price-per-day').data('price'), 10);
         var numDays = $(lineItem).find('.rental-days').val();
+        var securityDeposit = parseInt($(lineItem).find('.security-deposit').data('deposit'), 10);
 
-        return pricePerDay * numDays;
+        return pricePerDay * numDays + securityDeposit;
     });
     var total = subTotals.reduce(function(prev, curr) {
         return prev + curr;
