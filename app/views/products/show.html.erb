@@ -2,10 +2,8 @@
 <div class="container-img-map">
   <div id="map-canvas"></div>
 
-  <div class="container-img">
-    <a>
-      <%= image_tag @product.image.url %>
-    </a>
+  <div class="container-img-individual">
+      <%= image_tag @product.image.url, class:"container-img-individual" %>
   </div>
 </div>
 
