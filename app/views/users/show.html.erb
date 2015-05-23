@@ -56,7 +56,7 @@
       <tr>
         <th>Order Date</th>
         <th>Product Name</th>
-        <th>Duration</th>
+        <th>Duration (Day)</th>
         <th>Daily Price</th>
         <th>Security Deposit</th>
         <th>Total Amount</th>
@@ -79,7 +79,7 @@
           <tr>
             <td><%= order.created_at.strftime("%b %d, %Y") %></td>
             <td><%= order.line_items.first.product.name %></td>
-            <td><%= order.line_items.first.duration %> days</td>
+            <td class="duration-length"><%= order.line_items.first.duration %></td>
             <td>$<%= "#{'%.02f' % order.line_items.first.product.price}" %></td>
             <td>$<%= "#{'%.02f' % order.line_items.first.product.deposit}" %></td>
             <td>$<%= "#{'%.02f' % order.total_price}" %></td>

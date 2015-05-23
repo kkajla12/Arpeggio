@@ -3,8 +3,9 @@
     <thead>
       <tr>
         <th>Item</th>
-        <th>Price per Day</th>
-        <th>Rental Duration (Days)</th>
+        <th>Price / Day</th>
+        <th>Security Deposit</th>
+        <th>Rental Duration (Day)</th>
         <th></th>
       </tr>
     </thead>
@@ -16,6 +17,9 @@
             </td>
             <td class="price-per-day" data-price="<%= item.product.price %>">
               <%= number_to_currency(item.product.price) %>
+            </td>
+            <td class="security-deposit" data-deposit="<%= item.product.deposit %>">
+              <%= number_to_currency(item.product.deposit) %>
             </td>
             <td>
               <%= form_for (item) do |f| %>
