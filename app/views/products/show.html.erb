@@ -36,7 +36,7 @@
   </span>
 </h4>
 
-<%= button_to 'Add to Cart', line_items_path(product_id: @product), class: "button" %>
+<%= button_to 'Add to Cart', line_items_path(product_id: @product), class: "button button-add-to-cart" %>
 
 <%= link_to 'Edit Product', edit_product_path(@product), class: "button", id: "edit", 'data-no-turbolink' => true if user_signed_in? && (current_user.id == @product.user_id)  %>
 

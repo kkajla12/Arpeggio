@@ -30,18 +30,19 @@ textarea {
 }
 
 .alert {
-  color: white;
+  color: black;
   font-family: "Lato";
+  font-size: 18px;
   text-align: center;
   width: 50%;
   margin: 20px auto;
   padding: 5px;
 }
   .alert-success {
-    background-color: rgba(39, 174, 96, 0.8);
+    //background-color: rgba(39, 174, 96, 0.8);
   }
   .alert-danger {
-    background-color: rgba(231, 76, 60, 0.8);
+    //background-color: rgba(231, 76, 60, 0.8);
   }
 
 .button {
@@ -50,10 +51,24 @@ textarea {
   color: white;
   display: block;
   font-family: "Lato";
-  font-weight: 100;
-  font-size: 15px;
+  font-weight: 105;
+  font-size: 20px;
   margin: auto;
   padding: 7px 15px;
+  border-radius:8px;
+
+//add button hover effect(glow)
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
 
   &.button-big {
     min-width: 250px;
@@ -61,6 +76,7 @@ textarea {
     margin: 60px auto;
     padding: 20px 40px;
     font-size: 28px;
+    text-decoration:none;
   }
   &.button-danger {
     background-color: rgba(231, 76, 60, 0.8);
@@ -70,7 +86,24 @@ textarea {
     color: rgba(231, 76, 60, 0.8);
     font-weight: normal;
   }
+  &.button-small {
+    width: 100px;
+    font-size: 15px;
+  }
+  &.button-edit-account {
+    text-decoration: none;
+  }
+  &.button-reset-password {
+   font-size: 5px !important;
+  }
 }
+
+.button:hover, .button:focus, .button:active {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+
+
   a.button {
     text-decoration: none;
     width: 40%;
@@ -100,7 +133,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Lato', Helvetica, sans-serif;
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-align: center;
 }
   h1 {
@@ -122,12 +155,15 @@ p {
 
 a {
   color: rgb(39, 174, 96);
+  text-decoration: none;
+
 }
   a:visited {
     color: rgb(39, 174, 96);
   }
   a:hover {
-    color: red;
+    //color: red;
+    text-decoration: underline;
   }
 
 /* header */
@@ -180,14 +216,14 @@ a {
 .nav .logo {
   float: left;
   text-transform: uppercase;
-  font-weight: 100;
+  font-weight: 300;
   font-size: 32px;
   color: white;
   letter-spacing: 2px;
   margin-left: 20px;
 }
   .nav .logo a {
-    text-decoration: none;
+    text-decoration: none !important;
   }
 
 .nav .user-action {
@@ -200,9 +236,11 @@ a {
 
 .nav a {
   color: white;
+  text-decoration: none;
 }
   .nav a:hover {
     background-color: transparent;
+    text-decoration: underline;
     color: rgba(255, 255, 255, 0.8);
   }
 
@@ -227,6 +265,8 @@ a {
 
 .product-price-wrapper, .product-status-wrapper {
   color: #999;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .product-price {
   color: #000;
@@ -241,6 +281,8 @@ a {
 .product-type {
   color: #777;
   font-style: italic;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .container-img-map {
@@ -252,8 +294,8 @@ a {
 }
 
 #map-canvas {
-  width: 300px;
-  height: 300px;
+  width: 260px;
+  height: 260px;
   margin: auto;
 }
 
@@ -290,19 +332,22 @@ a {
 
 .form-wrapper a {
   text-align: center;
-  display: block;
+  
   margin-top: 40px;
+
 }
 
 form {
-  margin: auto;
+  margin-left: 38%;
+  margin-right: 40%;
   text-align: center;
 }
   form .field {
     margin: 15px 0;
+    //display: block;
   }
     form label, form input, form textarea {
-      display: inline-block;
+      display: block;
       height: 36px;
     }
       form label {
@@ -310,11 +355,15 @@ form {
       }
         form .field label {
           width: 11em;
+          font-size: 100%;
           margin-right: 10px;
-          text-align: right;
+          text-align: left;
+          display: block;
+          margin-bottom: -16px;
+          text-transform: uppercase;
         }
       form input, form select, form textarea {
-        width: 160px;
+        width: 260px;
       }
         form input[type="text"], form input[type="email"], form input[type="password"] {
           text-indent: 10px;
@@ -325,9 +374,10 @@ form {
           height: 100px;
         }
     form .field.field-checkbox {
+      display:inline;
       label {
         width: auto;
-        margin-left: -7em;
+        margin-left: 2em;
       }
       input[type="checkbox"] {
         height: 14px;
@@ -344,7 +394,7 @@ form {
     }
     form .field.map {
       label {
-        text-align: center;
+        text-align: left;
       }
     }
 
@@ -356,7 +406,8 @@ form {
     }
 
 .product-action .button {
-    width: 140px;
+    width: 160px;
+    text-decoration:none;
 }
 
 .product-search-form {
@@ -446,7 +497,7 @@ thead {
   th, td {
     border-left: 1px solid #cbcbcb;
     border-width: 0 0 0 1px;
-    font-size: inherit;
+    font-size: medium;
     margin: 0;
     overflow: visible;
     padding: .5em 1em;
@@ -510,4 +561,19 @@ tr:nth-child(2n) {
 
 .duration-length {
   text-align: center;
+}
+
+.bottom-link {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.no-order {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 60px;
+  font-weight: bold;
+  font-size: 18px;
 }

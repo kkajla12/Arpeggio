@@ -9,8 +9,10 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+    <%= f.submit "Send me reset password instructions", class: "button" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class="bottom-link">
+	<%= render "devise/shared/links" %>
+</div>

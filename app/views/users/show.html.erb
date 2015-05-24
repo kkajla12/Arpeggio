@@ -50,31 +50,25 @@
   </tbody>
 </table>
 <% if user_signed_in? && (current_user.id == @user.id) %>
-  <h1>Orders</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Order Date</th>
-        <th>Product Name</th>
-        <th>Duration (Day)</th>
-        <th>Daily Price</th>
-        <th>Security Deposit</th>
-        <th>Total Amount</th>
-        <th>View</th>
-      </tr>
-    </thead>
-    <tbody>
+  <h1>Orders</h1> 
       <% if @orders.empty? %>
-        <tr>
-          <td>You have not ordered anything yet</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+        <div class="no-order">
+          You have not ordered anything yet.
+        </div>
       <% else %>
+      <table>
+        <thead>
+         <tr>
+          <th>Order Date</th>
+          <th>Product Name</th>
+          <th>Duration (Day)</th>
+          <th>Daily Price</th>
+          <th>Security Deposit</th>
+          <th>Total Amount</th>
+          <th>View</th>
+        </tr>
+       </thead>
+       <tbody>
         <% @orders.each do |order| %>
           <tr>
             <td><%= order.created_at.strftime("%b %d, %Y") %></td>
@@ -91,4 +85,4 @@
   </table>
 <% end %>
 
-<%= link_to 'Edit Account', edit_user_registration_path(@user), class: "button", id: "edit" if user_signed_in? && (current_user.id == @user.id) %>
+<%= link_to 'Edit Account', edit_user_registration_path(@user), class: "button button-edit-account", id: "edit" if user_signed_in? && (current_user.id == @user.id) %>

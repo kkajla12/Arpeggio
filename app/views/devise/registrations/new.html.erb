@@ -26,11 +26,11 @@
 
     <div class="field">
       <%= f.label :password %>
-      <%= f.password_field :password, autocomplete: "off", required: true, placeholder: @validatable ? "#{@minimum_password_length} characters minimum" : "" %>
+      <%= f.password_field :password, autocomplete: "off", required: true, placeholder: @validatable ? "#{@minimum_password_length} Characters Minimum" : "" %>
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation %>
+      <%= f.label :confirm_password %>
       <%= f.password_field :password_confirmation, autocomplete: "off", required: true %>
     </div>
 
@@ -40,8 +40,8 @@
     </div>
 
     <div class="field">
-      <%= f.label :locality %>(City)
-      <%= f.text_field :locality %>
+      <%= f.label :locality %>
+      <%= f.text_field :locality, placeholder: "City" %>
     </div>
 
     <div class="field">
@@ -50,8 +50,8 @@
     </div>
 
     <div class="field">
-      <%= f.label :region %>(2-letter State abbreviation)
-      <%= f.text_field :region %>
+      <%= f.label :region %>
+      <%= f.text_field :region, placeholder: "2-Letter State Abbreviation" %>
     </div>
 
     <div class="field">
@@ -69,5 +69,7 @@
     </div>
   <% end %>
 
-  <%= render "devise/shared/links" %>
+  <div class="bottom-link">
+      <%= render "devise/shared/links" %>
+  </div>
 </div>
