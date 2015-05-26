@@ -2,6 +2,7 @@
 <table>
     <thead>
       <tr>
+        <th></th>
         <th>Item</th>
         <th>Price / Day</th>
         <th>Security Deposit</th>
@@ -12,6 +13,9 @@
     <tbody>
       <% @cart.line_items.each do |item| %>
           <tr class="line-item">
+            <td >
+              <%= link_to (image_tag item.product.image.url(:thumb)), product_path(item.product.id), class: "img-thumbnail" %>
+            </td>
             <td>
               <%= item.product.name %>
             </td>

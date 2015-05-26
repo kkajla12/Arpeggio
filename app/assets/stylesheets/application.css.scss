@@ -85,6 +85,7 @@ textarea {
     background: none;
     color: rgba(231, 76, 60, 0.8);
     font-weight: normal;
+    width: 100px;
   }
   &.button-small {
     width: 100px;
@@ -94,7 +95,7 @@ textarea {
     text-decoration: none;
   }
   &.button-reset-password {
-   font-size: 5px !important;
+   font-size: 15px !important;
   }
 }
 
@@ -495,6 +496,7 @@ thead {
   text-align: left;
 }
   th, td {
+    text-align: center;
     border-left: 1px solid #cbcbcb;
     border-width: 0 0 0 1px;
     font-size: medium;
@@ -576,4 +578,16 @@ tr:nth-child(2n) {
   margin-bottom: 60px;
   font-weight: bold;
   font-size: 18px;
+}
+
+.img-thumbnail {
+  width: 130px;
+  height: 90px;
+  margin: auto;
+  display: flex;
+  display: -webkit-flex;
+          flex-direction: column;
+  -webkit-flex-direction: column;
+          justify-content: center;
+  -webkit-justify-content: center;
 }

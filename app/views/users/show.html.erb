@@ -1,7 +1,13 @@
 <h1>Listings</h1>
-<table>
-  <thead>
+  <% if @products.empty? %>
+    <div class="no-order">
+          Currently no listings.
+        </div>
+  <% else %>
+    <table>
+    <thead>
     <tr>
+      <th></th>
       <th>Product Name</th>
       <th>Daily Price</th>
       <th>Security Deposit</th>
@@ -12,20 +18,12 @@
       <% end %>
     </tr>
   </thead>
-
   <tbody>
-    <% if @products.empty? %>
-      <tr>
-        <td>Currently no listings</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    <% else %>
       <% @products.each do |product| %>
         <tr>
+          <td >
+            <%= link_to (image_tag product.image.url), product_path(product.id), 'data-no-turbolink' => true, class: "img-thumbnail" %>
+          </td>
           <td><%= link_to product.name, product, 'data-no-turbolink' => true %></td>
           <td>$<%= "#{'%.02f' % product.price}" %></td>
           <td>$<%= "#{'%.02f' % product.deposit}" %></td>
@@ -59,6 +57,7 @@
       <table>
         <thead>
          <tr>
+          <th></th>
           <th>Order Date</th>
           <th>Product Name</th>
           <th>Duration (Day)</th>
@@ -71,6 +70,7 @@
        <tbody>
         <% @orders.each do |order| %>
           <tr>
+            <td><%= link_to (image_tag order.line_items.first.product.image.url(:thumb)), product_url(order.line_items.first.product), class: "img-thumbnail" %></td>
             <td><%= order.created_at.strftime("%b %d, %Y") %></td>
             <td><%= order.line_items.first.product.name %></td>
             <td class="duration-length"><%= order.line_items.first.duration %></td>
