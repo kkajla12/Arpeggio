@@ -9,7 +9,7 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="EC2_INSTANCE_ADDR" port="80" type="tcp" />
+    <server host="ec2-52-10-25-173.us-west-2.compute.amazonaws.com" port="80" type="tcp" />
   </servers>
 
 
@@ -65,6 +65,11 @@
       </request>
       <thinktime value="1" random="true"/>
 
+      <!--user sign up-->
+      <request>
+        <dyn_variable name="authenticity_token"/>
+        <http url="/users/sign_up" version="1.1" method="GET"/>
+      </request>
       <thinktime value="3" random="true"/>
 
       <!-- declare all random variables that will be used for sign up -->
@@ -84,11 +89,45 @@
           url="/users"
           version="1.1"
           method="POST"
-          contents="user%5Bfirst_name%5D=%%_random_first_name%%&amp;user%5Blast_name%5D=%%_random_last_name%%&amp;user%5Bdate_of_birth%5D=1990-01-01&amp;user%5Bemail%5D=testuser%%_random_email_id%%@test.com&amp;user%5Bpassword%5D=password&amp;user%5Bpassword_confirmation%5D=password&amp;user%5Bstreet_address%5D=1234%20Gayley%20Avenue&amp;user%5Blocality%5D=Los%20Angeles&amp;user%5Bpostal_code%5D=90024&amp;user%5Bregion%5D=CA&amp;user%5Baccount_number%5D=1123581321&amp;user%5Brouting_number%5D=071101307"
+          contents="user%5Bfirst_name%5D=%%_random_first_name%%&amp;
+                    user%5Blast_name%5D=%%_random_last_name%%&amp;
+                    user%5Bdate_of_birth%5D=1990-01-01&amp;
+                    user%5Bemail%5D=testuser%%_random_email_id%%@test.com&amp;
+                    user%5Bpassword%5D=password&amp;
+                    user%5Bpassword_confirmation%5D=password&amp;
+                    user%5Bstreet_address%5D=1234%20Gayley%20Avenue&amp;
+                    user%5Blocality%5D=Los%20Angeles&amp;
+                    user%5Bpostal_code%5D=90024&amp;
+                    user%5Bregion%5D=CA&amp;
+                    user%5Baccount_number%5D=1123581321&amp;
+                    user%5Brouting_number%5D=071101307&amp;
+                    authenticity_token=%%_authenticity_token%%"
           content_type="application/x-www-form-urlencoded"/>
       </request>
       <thinktime value="2" random="true"/>
 
+
+      <!-- browse the product listing page for 2 seconds -->
+      <request>
+        <http url="/products" version="1.1" method="GET"/>
+      </request>
+      <thinktime value="2" random="true"/>
+
+      <!-- create a product -->
+      <request subst="true">
+        <http
+          url="/products"
+          version="1.1"
+          method="POST"
+          contents="product%5Bname=testproduct%5D&amp;
+                    product%5Bprice=20.00%5D&amp;
+                    product%5Bdeposit=150.00%5D&amp;
+                    product%5Btype=guitar&amp;
+                    product%5Bdescription=Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&amp;
+                    authenticity_token=%%_authenticity_token%%"
+          content_type="application/x-www-form-urlencoded"/>
+      </request>
+      <thinktime value="2" random="true"/>
 
       <!-- browse the product listing page for 2 seconds -->
       <request>
@@ -110,7 +149,8 @@
         <http url="/line_items"
           version="1.1"
           method="POST"
-          contents="product_id=%%_random_product_id%%"
+          contents="product_id=%%_random_product_id%%&amp;
+                    authenticity_token=%%_authenticity_token%%"
           content_type="application/x-www-form-urlencoded"/>
       </request>
       <thinktime value="2" random="true"/>
@@ -120,7 +160,11 @@
         <http url="/orders"
           version="1.1"
           method="POST"
-          contents="order%5Bname%5D=name&amp;order%5Baddress%5D=address&amp;order%5Bemail%5D=email&amp;payment_method_nonce=fake-valid-nonce"
+          contents="order%5Bname%5D=name&amp;
+                    order%5Baddress%5D=address&amp;
+                    order%5Bemail%5D=email&amp;
+                    payment_method_nonce=fake-valid-nonce&amp;
+                    authenticity_token=%%_authenticity_token%%"
           content_type="application/x-www-form-urlencoded"/>
       </request>
       <thinktime value="2" random="true"/>
