@@ -55,7 +55,6 @@ textarea {
   font-size: 20px;
   margin: auto;
   padding: 7px 15px;
-  border-radius:8px;
 
 //add button hover effect(glow)
   vertical-align: middle;
@@ -355,7 +354,7 @@ form {
         color: #aaa;
       }
         form .field label {
-          width: 11em;
+          width: 20em;
           font-size: 100%;
           margin-right: 10px;
           text-align: left;
@@ -485,7 +484,7 @@ form {
 
 table {
   margin: auto;
-
+  font-family: 'Lato', san-serif;
   border-collapse: collapse;
   border-spacing: 0;
   empty-cells: show;
@@ -590,4 +589,9 @@ tr:nth-child(2n) {
   -webkit-flex-direction: column;
           justify-content: center;
   -webkit-justify-content: center;
+}
+
+.danger-link {
+  color: rgba(231, 76, 60, 0.8) !important;
+  font-weight: normal;
 }

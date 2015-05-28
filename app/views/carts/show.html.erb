@@ -14,10 +14,10 @@
       <% @cart.line_items.each do |item| %>
           <tr class="line-item">
             <td >
-              <%= link_to (image_tag item.product.image.url(:thumb)), product_path(item.product.id), class: "img-thumbnail" %>
+              <%= link_to (image_tag item.product.image.url), product_path(item.product.id), class: "img-thumbnail" %>
             </td>
             <td>
-              <%= item.product.name %>
+              <%= link_to item.product.name, item.product %>
             </td>
             <td class="price-per-day" data-price="<%= item.product.price %>">
               <%= number_to_currency(item.product.price) %>
@@ -31,7 +31,7 @@
               <% end %>
             </td>
             <td>
-              <%= button_to 'Remove', item, method: :delete, class: "button button-danger-link" %>
+              <%= link_to 'Remove', item, method: :delete, class: "danger-link" %>
             </td>
           </tr>
       <% end %>
