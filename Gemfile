@@ -59,3 +59,6 @@ gem 'braintree'
 
 # geokit to handle bounds checking
 gem 'geokit'
+
+# memcached
+gem 'dalli'
