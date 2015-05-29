@@ -16,6 +16,7 @@ Product.delete_all
               locality: "Los Angeles", postal_code: "90024", region: "CA",
               street_address: "1234 Gayley Avenue", account_number: "1123581321",
               routing_number: "071000013")
+end
 
 (1..40).each do |i|
   Product.create!(name: "Marshall 2x12 Speaker Cabinet",
