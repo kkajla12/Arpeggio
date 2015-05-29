@@ -113,19 +113,27 @@
       </request>
       <thinktime value="2" random="true"/>
 
+      <setdynvars sourcetype="eval"
+          code='fun({Pid,DynVars})-> [[13, 10]] end.'>
+        <var name="nl" />
+      </setdynvars>
+
+      <setdynvars sourcetype="eval"
+          code='fun({Pid,DynVars})->
+                  {ok, Bin} = file:read_file("sample.png"),
+                  Bin
+                end.'>
+        <var name="attached_file" />
+      </setdynvars>
+
       <!-- create a product -->
       <request subst="true">
         <http
           url="/products"
           version="1.1"
           method="POST"
-          contents="product%5Bname=testproduct%5D&amp;
-                    product%5Bprice=20.00%5D&amp;
-                    product%5Bdeposit=150.00%5D&amp;
-                    product%5Btype=guitar&amp;
-                    product%5Bdescription=Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&amp;
-                    authenticity_token=%%_authenticity_token%%"
-          content_type="application/x-www-form-urlencoded"/>
+          content_type='multipart/form-data; boundary=----FormBoundary'
+          contents='------FormBoundary%%_nl%%Content-Disposition: form-data; name="product[name]"%%_nl%%%%_nl%%testproduct%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="product[price]"%%_nl%%%%_nl%%20.00%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="product[deposit]"%%_nl%%%%_nl%%150.00%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="product[type]%%_nl%%%%_nl%%Guitar%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="product[description]"%%_nl%%%%_nl%%Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="product[lat]"%%_nl%%%%_nl%%34.0704374%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="product[lon]"%%_nl%%%%_nl%%-118.4421695%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="product[image]"; filename="sample.gif"%%_nl%%Content-Type: image/png%%_nl%%%%_nl%%%%_attached_file%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="commit"%%_nl%%%%_nl%%Create Product%%_nl%%------FormBoundary--%%_nl%%%%_nl%%'>
       </request>
       <thinktime value="2" random="true"/>
 
