@@ -59,3 +59,6 @@ gem 'braintree'
 
 # geokit to handle bounds checking
 gem 'geokit'
+
+# dump and load db - for seeding
+gem 'yaml_db'

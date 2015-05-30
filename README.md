@@ -33,3 +33,9 @@ $ rails server
 
 If deploying on EC2 or other cloud hosting services, be sure to have the
 `aws.yml` credential file present in the `config` directory.
+
+To load data sets on EC2, run:
+
+```
+$ rake db:data:load     # loads db/data.yml into database
+```
