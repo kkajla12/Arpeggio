@@ -10,7 +10,7 @@ User.delete_all
 Product.delete_all
 
 # change 100 to 5000 for large dataset
-(1..100).each do |i|
+(1..500).each do |i|
   User.create(email: "user#{i}@arpeggio.com", password: "password",
               first_name: "test", last_name: "user", date_of_birth: "1993-12-25",
               locality: "Los Angeles", postal_code: "90024", region: "CA",
@@ -18,8 +18,8 @@ Product.delete_all
               routing_number: "071000013")
 end
 
-(1..100).each do |i|
-  (1..25).each do |j|
+(1..500).each do |i|
+  (1..50).each do |j|
     Product.create!(name: "Marshall 2x12 Speaker Cabinet",
                     description: %{
                       This is a sample product listing for this particular product.
