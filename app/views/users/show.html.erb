@@ -76,15 +76,17 @@
         </tr>
       <% else %>
         <% @orders.each do |order| %>
-          <tr>
-            <td><%= order.created_at.strftime("%b %d, %Y") %></td>
-            <td><%= order.line_items.first.product.name %></td>
-            <td class="duration-length"><%= order.line_items.first.duration %></td>
-            <td>$<%= "#{'%.02f' % order.line_items.first.product.price}" %></td>
-            <td>$<%= "#{'%.02f' % order.line_items.first.product.deposit}" %></td>
-            <td>$<%= "#{'%.02f' % order.total_price}" %></td>
-            <td><%= link_to 'View Product', product_url(order.line_items.first.product) %></td>
-          </tr>
+          <% cache(cache_key_for_order(order)) do %>
+            <tr>
+              <td><%= order.created_at.strftime("%b %d, %Y") %></td>
+              <td><%= order.line_items.first.product.name %></td>
+              <td class="duration-length"><%= order.line_items.first.duration %></td>
+              <td>$<%= "#{'%.02f' % order.line_items.first.product.price}" %></td>
+              <td>$<%= "#{'%.02f' % order.line_items.first.product.deposit}" %></td>
+              <td>$<%= "#{'%.02f' % order.total_price}" %></td>
+              <td><%= link_to 'View Product', product_url(order.line_items.first.product) %></td>
+            </tr>
+          <% end %>
         <% end %>
       <% end %>
     </tbody>
