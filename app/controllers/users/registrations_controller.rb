@@ -1,5 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 before_filter :update_sanitized_params, if: :devise_controller?
+caches_page :new
 # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
 
