@@ -22,5 +22,8 @@ module Arpeggio
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # So that jquery.js will be served from the server when CDN is not available:
+    config.assets.precompile += ['jquery.js']
   end
 end
