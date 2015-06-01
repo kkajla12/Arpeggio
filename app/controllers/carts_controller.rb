@@ -12,6 +12,7 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
+    fresh_when([@cart])
   end
 
   # GET /carts/new
