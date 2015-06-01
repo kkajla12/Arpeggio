@@ -1,3 +1,4 @@
+<% cache(cache_key_for_user(current_user)) do %>
 <h1>Listings</h1>
 <table>
   <thead>
@@ -25,26 +26,28 @@
       </tr>
     <% else %>
       <% @products.each do |product| %>
-        <tr>
-          <td><%= link_to product.name, product, 'data-no-turbolink' => true %></td>
-          <td>$<%= "#{'%.02f' % product.price}" %></td>
-          <td>$<%= "#{'%.02f' % product.deposit}" %></td>
-          <td><%= product.classification.capitalize %></td>
-          <td>
-            <span class="product-status-<%= product.rented ? "rented" : "available" %>">
-              <% if product.rented %>
-                Not Available
-              <% else %>
-                Available
-              <% end %>
-            </span>
-          </td>
-          <% if user_signed_in? && (current_user.id == @user.id) %>
+        <% cache(cache_key_for_product(product)) do %>
+          <tr>
+            <td><%= link_to product.name, product, 'data-no-turbolink' => true %></td>
+            <td>$<%= "#{'%.02f' % product.price}" %></td>
+            <td>$<%= "#{'%.02f' % product.deposit}" %></td>
+            <td><%= product.classification.capitalize %></td>
             <td>
-              <%= link_to 'Edit Product', edit_product_path(product), 'data-no-turbolink' => true %>
+              <span class="product-status-<%= product.rented ? "rented" : "available" %>">
+                <% if product.rented %>
+                  Not Available
+                <% else %>
+                  Available
+                <% end %>
+              </span>
             </td>
-          <% end %>
-        </tr>
+            <% if user_signed_in? && (current_user.id == @user.id) %>
+              <td>
+                <%= link_to 'Edit Product', edit_product_path(product), 'data-no-turbolink' => true %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
       <% end %>
     <% end %>
   </tbody>
@@ -94,3 +97,4 @@
 <% end %>
 
 <%= link_to 'Edit Account', edit_user_registration_path(@user), class: "button", id: "edit" if user_signed_in? && (current_user.id == @user.id) %>
+<% end %>
