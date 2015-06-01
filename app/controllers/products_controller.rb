@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource :only => :edit
+  caches_page :new
 
   # GET /products
   # GET /products.json

@@ -54,8 +54,11 @@ gem 'aws-sdk', '< 2.0'
 # use will_paginate for product pagination
 gem 'will_paginate', '~> 3.0.6'
 
-# braintree for transactions
+# Use braintree for transactions
 gem 'braintree'
+
+# Use actionpack-page_caching to serve static pages from the asset pipeline
+gem 'actionpack-page_caching'
 
 # geokit to handle bounds checking
 gem 'geokit'
