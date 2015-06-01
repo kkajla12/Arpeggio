@@ -61,6 +61,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @renter_email = User.find(@product.user_id).email
+    fresh_when([@product, @renter_email])  # client-side-cache when product and renter_email unchanged
   end
 
   # GET /products/new

@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     @user = User.find(@order.user_id)
+    fresh_when([@order])
   end
 
   # GET /orders/new
@@ -24,7 +25,7 @@ class OrdersController < ApplicationController
       return
     end
 
-    @order = Order.new
+    @order = Order.new if stale?(@cart)
   end
 
   # GET /orders/1/edit

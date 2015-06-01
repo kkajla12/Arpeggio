@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
     @products = @user.products
     @orders = @user.orders
+    fresh_when([@user, @products, @orders])  # client-side-cache when user, product, and orders unchanged
   end
 
   private
