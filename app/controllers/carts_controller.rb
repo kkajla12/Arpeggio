@@ -68,7 +68,7 @@ class CartsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart
-      @cart = Cart.find(params[:id])
+      @cart = Cart.includes(line_items: [:product]).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
