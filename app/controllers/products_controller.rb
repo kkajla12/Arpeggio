@@ -37,21 +37,21 @@ class ProductsController < ApplicationController
 
     if params[:keyword] and !params[:keyword].empty? and
        params[:classification] and !params[:classification].empty?
-      @products = Product.where('name like ? and classification like ? and rented = ? and lat < ? and lat > ? and lon < ? and lon > ?',
+      @products = Product.where('name like ? and classification like ? and lat < ? and lat > ? and lon < ? and lon > ?',
                                 "%#{params[:keyword]}%",
                                 "%#{params[:classification]}%",
-                                false, s_bound, n_bound, e_bound, w_bound).order('created_at DESC')
+                                s_bound, n_bound, e_bound, w_bound).order('created_at DESC')
     elsif params[:keyword] and !params[:keyword].empty?
-      @products = Product.where('name like ? and rented = ? and lat < ? and lat > ? and lon < ? and lon > ?',
+      @products = Product.where('name like ? and lat < ? and lat > ? and lon < ? and lon > ?',
                                 "%#{params[:keyword]}%",
-                                false, s_bound, n_bound, e_bound, w_bound).order('created_at DESC')
+                                s_bound, n_bound, e_bound, w_bound).order('created_at DESC')
     elsif params[:classification] and !params[:classification].empty?
-      @products = Product.where('classification like ? and rented = ? and lat < ? and lat > ? and lon < ? and lon > ?',
+      @products = Product.where('classification like ? and lat < ? and lat > ? and lon < ? and lon > ?',
                                 "%#{params[:classification]}%",
-                                false, s_bound, n_bound, e_bound, w_bound).order('created_at DESC')
+                                s_bound, n_bound, e_bound, w_bound).order('created_at DESC')
     else
-      @products = Product.where('rented = ? and lat < ? and lat > ? and lon < ? and lon > ?',
-                                false, s_bound, n_bound, e_bound, w_bound).order('created_at DESC')
+      @products = Product.where('lat < ? and lat > ? and lon < ? and lon > ?',
+                                s_bound, n_bound, e_bound, w_bound).order('created_at DESC')
     end
 
     @products = @products.paginate(:page => params[:page], :per_page => 12)

@@ -22,6 +22,14 @@ To ensure all necessary dependencies from the Gemfile are available to the appli
 $ bundle install
 ```
 
+If `bundle install` does not work, you may have to run the following commands:
+
+```
+$ brew install mysql # For Mac OS/X
+$ sudo apt-get install libmysqlclient-dev # For Linux
+$ gem install mysql2 -v '0.3.18'
+```
+
 ## Usage
 
 To begin the application locally, run:
@@ -33,3 +41,9 @@ $ rails server
 
 If deploying on EC2 or other cloud hosting services, be sure to have the
 `aws.yml` credential file present in the `config` directory.
+
+To load data sets on EC2, run:
+
+```
+$ rake db:data:load     # loads db/data.yml into database
+```
