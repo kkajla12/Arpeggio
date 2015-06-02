@@ -41,13 +41,13 @@
                 <% end %>
               </span>
             </td>
+        <% end %>
             <% if user_signed_in? && (current_user.id == @user.id) %>
               <td>
                 <%= link_to 'Edit Product', edit_product_path(product), 'data-no-turbolink' => true %>
               </td>
             <% end %>
           </tr>
-        <% end %>
       <% end %>
     <% end %>
   </tbody>
