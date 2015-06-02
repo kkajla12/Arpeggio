@@ -53,8 +53,6 @@ class ProductsController < ApplicationController
       @products = Product.where('lat < ? and lat > ? and lon < ? and lon > ?',
                                 s_bound, n_bound, e_bound, w_bound).order('created_at DESC')
     end
-
-    @products = @products.paginate(:page => params[:page], :per_page => 12)
   end
 
   # GET /products/1

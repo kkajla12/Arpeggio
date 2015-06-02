@@ -52,9 +52,6 @@ gem 'cancan'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'aws-sdk', '< 2.0'
 
-# use will_paginate for product pagination
-gem 'will_paginate', '~> 3.0.6'
-
 # braintree for transactions
 gem 'braintree'
 
