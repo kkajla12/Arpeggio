@@ -28,6 +28,9 @@ If `bundle install` does not work, you may have to run the following commands:
 $ brew install mysql # For Mac OS/X
 $ sudo apt-get install libmysqlclient-dev # For Linux
 $ gem install mysql2 -v '0.3.18'
+
+$ brew install imagemagick && brew link --overwrite imagemagick # For Mac OS/X
+$ sudo apt-get install imagemagick # For Linux
 ```
 
 ## Usage

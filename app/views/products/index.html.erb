@@ -23,7 +23,7 @@
   <% @products.each do |product| %>
     <div class="product">
       <div class="container-img">
-        <%= link_to (image_tag product.image.url), product_path(product.id), 'data-no-turbolink' => true %>
+        <%= link_to (image_tag product.image.url(:thumbnail)), product_path(product.id), 'data-no-turbolink' => true %>
       </div>
 
       <h3>
