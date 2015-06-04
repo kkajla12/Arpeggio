@@ -85,10 +85,16 @@ Rails.application.configure do
     :storage => :s3,
     :s3_host_name => 's3-us-west-2.amazonaws.com',
     :s3_credentials => "#{Rails.root}/config/aws.yml",
-    :path => "/public/uploads/:basename.:extension",
-    :url => "/uploads/:basename.:extension",
-    :bucket => 'scalableinternetservices/Arpeggio'
+    :path => "/public/uploads/:basename_:style.:extension",
+    :url => "/uploads/:basename_:style.:extension",
+    :bucket => 'scalableinternetservices/Arpeggio',
+    :styles => {
+      :thumbnail => ['250>',  :jpg, :quality => 30],
+      :normal    => ['500>',  :jpg, :quality => 60]
+    }
   }
+
+  Paperclip.options[:command_path] = "/usr/local/bin/" # TODO: this may be incorrect!
 
   # Braintree sandbox credentials: it is OK to upload these because they are
   # for the the sandbox environment and are not considered confidential

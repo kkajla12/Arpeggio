@@ -46,9 +46,15 @@ Rails.application.configure do
 
   # Paperclip config
   config.paperclip_defaults = {
-    :url => '/uploads/:basename.:extension',
-    :path => ':rails_root/public/uploads/:basename.:extension'
+    :url => '/uploads/:basename_:style.:extension',
+    :path => ':rails_root/public/uploads/:basename_:style.:extension',
+    :styles => {
+      :thumbnail => ['250>',  :jpg, :quality => 30],
+      :normal    => ['500>',  :jpg, :quality => 60]
+    }
   }
+
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 
   # Braintree sandbox credentials: it is OK to upload these because they are
   # for the the sandbox environment
