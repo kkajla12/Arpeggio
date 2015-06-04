@@ -64,5 +64,9 @@ gem 'actionpack-page_caching'
 # geokit to handle bounds checking
 gem 'geokit'
 
+# memcached
+gem 'dalli'
+
 # dump and load db - for seeding
 gem 'yaml_db'
+
