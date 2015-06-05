@@ -70,6 +70,11 @@ textarea {
     color: rgba(231, 76, 60, 0.8);
     font-weight: normal;
   }
+  &.button-disabled {
+    background-color: #bbb;
+    cursor: default;
+    outline: none;
+  }
 }
   a.button {
     text-decoration: none;
@@ -301,7 +306,7 @@ form {
   form .field {
     margin: 15px 0;
   }
-    form label, form input, form textarea {
+    form label, form input, input, form textarea {
       display: inline-block;
       height: 36px;
     }
@@ -313,7 +318,7 @@ form {
           margin-right: 10px;
           text-align: right;
         }
-      form input, form select, form textarea {
+      form input, input, form select, form textarea {
         width: 160px;
       }
         form input[type="text"], form input[type="email"], form input[type="password"] {
