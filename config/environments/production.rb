@@ -91,7 +91,7 @@ Rails.application.configure do
     }
   }
 
-  Paperclip.options[:command_path] = "/usr/local/bin/" # TODO: this may be incorrect!
+  Paperclip.options[:command_path] = "/usr/bin/"
 
   # Braintree sandbox credentials: it is OK to upload these because they are
   # for the the sandbox environment and are not considered confidential
